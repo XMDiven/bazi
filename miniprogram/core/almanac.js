@@ -1,4 +1,4 @@
-// 万年历模型（PRD 9）：只有日期、干支、节气和白名单节日，不含任何宜忌类信息
+// 万年历模型（PRD 9）：只有日期、干支、节气和白名单节日
 const { Solar } = require('lunar-javascript');
 const { FEATURES } = require('./features');
 const { toUtcMs } = require('./wallTime');
