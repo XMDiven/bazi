@@ -1,1 +1,12 @@
-
+.year-picker { margin-bottom: var(--sp-3); }
+.past { opacity: 0.45; }
+.term-name { display: flex; align-items: center; gap: var(--sp-2); }
+.tag {
+  font-size: var(--fs-min);
+  color: var(--ink-2);
+  border: 1rpx solid var(--line);
+  border-radius: 8rpx;
+  padding: 0 var(--sp-1);
+}
+.tag-accent { color: var(--accent); border-color: var(--accent); }
+.note { padding: var(--sp-4) 0; }

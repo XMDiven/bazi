@@ -1,1 +1,20 @@
-<view class="page"><view class="title">节气表</view></view>
+<view class="page">
+  <picker mode="selector" range="{{years}}" value="{{yearIndex}}" bindchange="onYear">
+    <view class="title year-picker">{{year}}年 ›</view>
+  </picker>
+  <view class="card">
+    <view
+      wx:for="{{rows}}" wx:key="name"
+      class="row term-row {{item.past ? 'past' : ''}}"
+      data-index="{{index}}" bindtap="onRow"
+    >
+      <view class="term-name">
+        <text>{{item.name}}</text>
+        <text class="tag">{{item.isJie ? '节' : '中气'}}</text>
+        <text wx:if="{{item.upcoming}}" class="tag tag-accent">即将到来</text>
+      </view>
+      <text class="aux">{{item.dateText}} {{item.timeText}}</text>
+    </view>
+  </view>
+  <view class="aux note">时刻为北京时间，由天文算法计算，与公开历表偏差不超过 1 分钟。</view>
+</view>

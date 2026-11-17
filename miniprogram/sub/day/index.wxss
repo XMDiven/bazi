@@ -1,1 +1,6 @@
-
+.block-title { font-weight: 600; margin-bottom: var(--sp-2); }
+.hour-row { justify-content: flex-start; gap: var(--sp-3); flex-wrap: wrap; }
+.hour-name { width: 120rpx; }
+.hour-range { width: 200rpx; }
+.hour-gz { font-weight: 600; }
+.hour-note { margin-left: auto; }

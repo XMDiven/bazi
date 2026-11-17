@@ -1,5 +1,5 @@
 // 展示格式（PRD 14.1）
-const { beijingNow } = require('./wallTime');
+const { beijingNow, isValidSolarDate, isInSupportedRange } = require('./wallTime');
 
 const WEEKDAYS = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'];
 const MINUS = '−';
@@ -36,4 +36,14 @@ function relativeTime(nowMs, thenMs) {
   return dateCn(then);
 }
 
-module.exports = { pad2, dateCn, monthDayCn, hm, weekdayCn, minutesDelta, relativeTime };
+const isoDate = p => `${p.year}-${pad2(p.month)}-${pad2(p.day)}`;
+
+/** 'YYYY-MM-DD' → DateParts；不存在或超出 1900–2100 时返回 null */
+function parseIsoDate(s) {
+  const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(String(s || ''));
+  if (!m) return null;
+  const p = { year: Number(m[1]), month: Number(m[2]), day: Number(m[3]) };
+  return isValidSolarDate(p.year, p.month, p.day) && isInSupportedRange(p) ? p : null;
+}
+
+module.exports = { pad2, dateCn, monthDayCn, hm, weekdayCn, minutesDelta, relativeTime, isoDate, parseIsoDate };

@@ -24,3 +24,11 @@ test('relativeTime', () => {
   assert.equal(F.relativeTime(now, Date.UTC(2026, 0, 5, 4, 0)), '1月5日');
   assert.equal(F.relativeTime(now, Date.UTC(2025, 0, 5, 4, 0)), '2025年1月5日');
 });
+test('isoDate / parseIsoDate', () => {
+  assert.equal(F.isoDate({ year: 2024, month: 2, day: 4 }), '2024-02-04');
+  assert.deepEqual(F.parseIsoDate('2024-02-04'), { year: 2024, month: 2, day: 4 });
+  assert.equal(F.parseIsoDate('2024-02-30'), null);
+  assert.equal(F.parseIsoDate('1899-12-31'), null);
+  assert.equal(F.parseIsoDate('garbage'), null);
+  assert.equal(F.parseIsoDate(undefined), null);
+});

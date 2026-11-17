@@ -1,1 +1,5 @@
-
+.head-row { display: flex; align-items: center; gap: var(--sp-2); margin-bottom: var(--sp-3); }
+.nav-btn { min-width: var(--tap); min-height: var(--tap); line-height: var(--tap); text-align: center; font-size: var(--fs-title); }
+.today-btn { margin-left: auto; min-height: var(--tap); line-height: var(--tap); }
+.day-summary { margin-top: var(--sp-3); }
+.summary-foot { border-bottom: none; }
