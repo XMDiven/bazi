@@ -1,0 +1,4 @@
+<view wx:if="{{lines.length}}" class="notice">
+  <view wx:for="{{lines}}" wx:key="*this" class="notice-line">{{item}}</view>
+  <slot></slot>
+</view>

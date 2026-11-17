@@ -1,0 +1,9 @@
+<view class="seg" role="tablist">
+  <view
+    wx:for="{{items}}" wx:key="key"
+    id="{{item.id || ''}}"
+    class="seg-item {{item.key === value ? 'seg-on' : ''}}"
+    role="tab" aria-selected="{{item.key === value}}"
+    data-key="{{item.key}}" bindtap="onTap"
+  >{{item.text}}</view>
+</view>
