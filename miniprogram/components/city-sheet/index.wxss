@@ -1,0 +1,11 @@
+.search {
+  height: var(--tap);
+  padding: 0 var(--sp-3);
+  border: 1rpx solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper);
+  margin-bottom: var(--sp-2);
+}
+.city-sub { padding-left: var(--sp-4); }
+.city-on { color: var(--accent); font-weight: 600; }
+.empty-search, .overseas { padding: var(--sp-3) 0; text-align: center; }

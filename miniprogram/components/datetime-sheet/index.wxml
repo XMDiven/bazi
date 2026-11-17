@@ -1,0 +1,40 @@
+<sheet show="{{show}}" title="出生日期与时间" bind:close="onClose">
+  <view slot="action" id="datetime-confirm" class="confirm" bindtap="onConfirm">确定</view>
+  <block wx:if="{{draft}}">
+    <segmented items="{{calendarItems}}" value="{{draft.calendar}}" bind:change="onCalendar" />
+    <picker-view class="wheel" indicator-class="wheel-indicator" value="{{dateIndexes}}" bindchange="onDateChange">
+      <picker-view-column>
+        <view wx:for="{{columns.years}}" wx:key="value" class="wheel-item">{{item.label}}</view>
+      </picker-view-column>
+      <picker-view-column>
+        <view wx:for="{{columns.months}}" wx:key="label" class="wheel-item">{{item.label}}</view>
+      </picker-view-column>
+      <picker-view-column>
+        <view wx:for="{{columns.days}}" wx:key="day" class="wheel-item">{{item.label}}</view>
+      </picker-view-column>
+    </picker-view>
+
+    <view class="section-label aux">时间精度</view>
+    <segmented items="{{precisionItems}}" value="{{draft.precision}}" bind:change="onPrecision" />
+
+    <picker-view wx:if="{{draft.precision === 'exact'}}" class="wheel" indicator-class="wheel-indicator" value="{{timeIndexes}}" bindchange="onTimeChange">
+      <picker-view-column>
+        <view wx:for="{{hourOptions}}" wx:key="*this" class="wheel-item">{{item}}</view>
+      </picker-view-column>
+      <picker-view-column>
+        <view wx:for="{{minuteOptions}}" wx:key="*this" class="wheel-item">{{item}}</view>
+      </picker-view-column>
+    </picker-view>
+
+    <view wx:if="{{draft.precision === 'shichen'}}" class="shichen-list">
+      <view
+        wx:for="{{shichenList}}" wx:key="index"
+        class="row shichen-item {{draft.shichen === item.index ? 'shichen-on' : ''}}"
+        data-index="{{item.index}}" bindtap="onShichen"
+      >
+        <text>{{item.name}}</text>
+        <text class="aux">{{item.start}}–{{item.end}}</text>
+      </view>
+    </view>
+  </block>
+</sheet>
