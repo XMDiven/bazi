@@ -1,1 +1,4 @@
-{ "navigationBarTitleText": "反查结果", "usingComponents": {} }
+{
+  "navigationBarTitleText": "反查结果",
+  "usingComponents": { "notice": "/components/notice/index", "empty-state": "/components/empty-state/index" }
+}

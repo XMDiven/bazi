@@ -1,1 +1,27 @@
-
+.tabs { margin-bottom: var(--sp-3); }
+.search {
+  height: var(--tap);
+  padding: 0 var(--sp-3);
+  border: 1rpx solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  margin-bottom: var(--sp-3);
+}
+.swipe { position: relative; overflow: hidden; border-radius: var(--radius); margin-bottom: var(--sp-2); }
+.swipe-actions { position: absolute; top: 0; right: 0; bottom: 0; display: flex; }
+.swipe-btn {
+  width: 140rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--line);
+  color: var(--ink);
+  font-size: var(--fs-aux);
+}
+.swipe-danger { background: var(--accent); color: var(--on-accent); }
+.swipe-body { position: relative; margin-bottom: 0; transition: transform 200ms ease-out; }
+.swiped-3 { transform: translateX(-420rpx); }
+.swiped-2 { transform: translateX(-280rpx); }
+.item-title { font-weight: 600; }
+.recent-row { display: flex; justify-content: space-between; align-items: center; }
+.clear-recent { text-align: center; padding: var(--sp-4) 0; }

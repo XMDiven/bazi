@@ -1,1 +1,9 @@
-{ "navigationBarTitleText": "编辑档案", "usingComponents": {} }
+{
+  "navigationBarTitleText": "档案",
+  "usingComponents": {
+    "segmented": "/components/segmented/index",
+    "datetime-sheet": "/components/datetime-sheet/index",
+    "city-sheet": "/components/city-sheet/index",
+    "empty-state": "/components/empty-state/index"
+  }
+}

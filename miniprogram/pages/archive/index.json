@@ -1,1 +1,4 @@
-{ "navigationBarTitleText": "档案", "usingComponents": {} }
+{
+  "navigationBarTitleText": "档案",
+  "usingComponents": { "empty-state": "/components/empty-state/index" }
+}

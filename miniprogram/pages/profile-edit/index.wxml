@@ -1,1 +1,44 @@
-<view class="page"><view class="title">编辑档案</view></view>
+<view class="page">
+  <empty-state wx:if="{{status === 'invalid'}}" text="没能读取这次换算" />
+  <block wx:elif="{{status === 'ok'}}">
+    <view class="card">
+      <view class="row">
+        <text class="field-label">称呼</text>
+        <input id="name-input" class="name-input" placeholder="例如：妈妈" value="{{name}}" maxlength="20" bindinput="onName" />
+      </view>
+      <view wx:if="{{errors.name}}" class="field-error">{{errors.name}}</view>
+
+      <view class="row" bindtap="openDate">
+        <text class="field-label">日期与时间</text>
+        <view class="field-value"><view>{{dateText}}</view><view class="aux">{{timeText}}</view></view>
+      </view>
+      <view wx:if="{{errors.date}}" class="field-error">{{errors.date}}</view>
+      <view wx:if="{{errors.time}}" class="field-error">{{errors.time}}</view>
+
+      <view class="row">
+        <text class="field-label">真太阳时</text>
+        <switch checked="{{input.useTrueSolarTime}}" disabled="{{input.precision === 'unknown'}}" bindchange="onTrueSolar" />
+      </view>
+      <view class="row" bindtap="openCity">
+        <text class="field-label">出生地</text>
+        <text class="field-value {{cityText ? '' : 'placeholder'}}">{{cityText || '选填'}}</text>
+      </view>
+      <view wx:if="{{errors.city}}" class="field-error">{{errors.city}}</view>
+
+      <view class="row column">
+        <text class="field-label">子时派别</text>
+        <segmented class="inline-seg" items="{{ziSectItems}}" value="{{input.ziSect}}" bind:change="onZiSect" />
+      </view>
+    </view>
+
+    <view class="card">
+      <view class="aux">四柱</view>
+      <view class="title">{{summary}}</view>
+    </view>
+
+    <button id="save" class="btn-primary" bindtap="onSave">保存</button>
+  </block>
+</view>
+
+<datetime-sheet show="{{showDateSheet}}" value="{{input}}" bind:confirm="onDateConfirm" bind:close="closeDate" />
+<city-sheet show="{{showCitySheet}}" value="{{input.cityId}}" bind:select="onCitySelect" bind:close="closeCity" />
