@@ -1,1 +1,14 @@
-
+.block { margin-top: var(--sp-3); }
+.block-title { font-weight: 600; margin-bottom: var(--sp-2); }
+.row-title { display: flex; justify-content: space-between; align-items: center; min-height: var(--tap); margin-bottom: 0; }
+.derivation-line { margin-top: var(--sp-2); }
+.bar-main { flex: 2; padding: 0 var(--sp-2); }
+.bar-btn { flex: 1; padding: 0; font-size: var(--fs-aux); }
+.update-profile { margin-top: var(--sp-2); }
+.empty { padding: var(--sp-5) var(--sp-4); text-align: center; color: var(--ink-2); }
+.empty-text { margin-bottom: var(--sp-4); }
+.feedback-btn { display: inline-block; padding: 0 var(--sp-5); }
+.option-on { color: var(--accent); font-weight: 600; }
+.poster-preview { width: 100%; border-radius: var(--radius); margin-bottom: var(--sp-3); }
+.poster-denied { margin-bottom: var(--sp-3); }
+.poster-canvas { position: fixed; left: -9999px; top: 0; width: 600px; height: 800px; }

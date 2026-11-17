@@ -1,0 +1,6 @@
+<view class="summary">
+  <view class="summary-text" aria-label="{{groups}}">
+    <text wx:for="{{groups}}" wx:key="index" class="group {{changed[index] ? 'changed' : ''}}">{{item}}</text>
+  </view>
+  <view class="aux subline">{{subline}}</view>
+</view>

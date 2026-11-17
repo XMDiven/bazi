@@ -1,0 +1,4 @@
+<sheet show="{{show}}" title="{{term}}" bind:close="onClose">
+  <view class="tip-def">{{def}}</view>
+  <view id="read-article" class="row link" bindtap="onRead"><text>阅读全文</text><text>›</text></view>
+</sheet>

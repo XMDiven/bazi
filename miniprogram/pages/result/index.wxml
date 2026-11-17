@@ -1,1 +1,75 @@
-<view class="page"><view class="title">结果</view></view>
+<view class="page">
+  <empty-state wx:if="{{status === 'invalid'}}" text="没能读取这次换算" actionText="重新换算" bind:action="onRetry" />
+
+  <view wx:elif="{{status === 'error'}}" class="empty">
+    <view class="empty-text">换算出错了</view>
+    <button class="btn-plain feedback-btn" open-type="feedback">反馈问题</button>
+  </view>
+
+  <block wx:elif="{{status === 'ok'}}">
+    <summary-header id="summary" groups="{{view.summaryGroups}}" subline="{{view.subline}}" changed="{{changed}}" />
+    <method-bar chips="{{view.methodChips}}" bind:chip="onChip" />
+
+    <notice wx:if="{{profileDirty}}" lines="{{['算法设定已改变，是否更新到档案？']}}">
+      <view class="link update-profile" bindtap="onUpdateProfile">更新到档案</view>
+    </notice>
+    <notice lines="{{view.warnings}}" />
+
+    <pillar-table id="pillar-table" table="{{view.table}}" changed="{{changed}}" bind:cell="onCell" />
+
+    <view wx:if="{{view.wuXingText}}" class="card block">
+      <view class="block-title">五行计数</view>
+      <view>{{view.wuXingText}}</view>
+    </view>
+
+    <view class="card block">
+      <view class="block-title">时间明细</view>
+      <view wx:for="{{view.timeLines}}" wx:key="*this">{{item}}</view>
+    </view>
+
+    <view id="terms-block" class="card block" bindtap="openTerms">
+      <view class="block-title row-title"><text>节气</text><text class="aux">节气表 ›</text></view>
+      <view wx:for="{{view.termsLines}}" wx:key="*this">{{item}}</view>
+    </view>
+
+    <view class="card block">
+      <view id="derivation-toggle" class="block-title row-title" bindtap="toggleDerivation">
+        <text>推导过程</text><text class="aux">{{derivationOpen ? '收起' : '展开'}}</text>
+      </view>
+      <view wx:if="{{derivationOpen}}" class="derivation">
+        <view wx:for="{{view.derivation}}" wx:key="*this" class="derivation-line">{{index + 1}}. {{item}}</view>
+      </view>
+    </view>
+
+    <view class="disclaimer">{{view.disclaimer}}</view>
+
+    <action-bar>
+      <button id="save-profile" class="btn-primary bar-main" bindtap="onSaveProfile">{{profileName ? '已存为·' + profileName : '存入档案'}}</button>
+      <button id="copy" class="btn-plain bar-btn" bindtap="onCopy">复制</button>
+      <button id="share" class="btn-plain bar-btn" open-type="share">分享</button>
+      <button id="poster" class="btn-plain bar-btn" bindtap="onPoster">生成图片</button>
+    </action-bar>
+  </block>
+</view>
+
+<sheet show="{{!!methodKind}}" title="{{methodTitle}}" bind:close="closeMethod">
+  <view wx:for="{{methodOptions}}" wx:key="key" class="row method-option {{item.selected ? 'option-on' : ''}}" data-key="{{item.key}}" bindtap="onMethodOption">
+    <text>{{item.text}}</text><text wx:if="{{item.selected}}">✓</text>
+  </view>
+  <view wx:if="{{methodKind === 'true_solar' && methodNeedsCity}}" class="aux">开启真太阳时需先选择出生地</view>
+</sheet>
+<city-sheet show="{{showCitySheet}}" value="{{''}}" bind:select="onCitySelect" bind:close="closeCity" />
+
+<term-tip show="{{tip.show}}" term="{{tip.term}}" def="{{tip.def}}" article="{{tip.article}}" bind:read="onReadArticle" bind:close="closeTip" />
+
+<sheet show="{{showPoster}}" title="生成图片" bind:close="closePoster">
+  <image wx:if="{{posterPath}}" class="poster-preview" src="{{posterPath}}" mode="widthFix" />
+  <view wx:if="{{posterDenied}}" class="poster-denied">
+    <view class="aux">需要相册权限才能保存图片</view>
+    <button class="btn-plain" bindtap="openSetting">去设置</button>
+  </view>
+  <button id="poster-save" class="btn-primary" bindtap="onPosterSave">保存</button>
+</sheet>
+
+<canvas type="2d" id="poster-canvas" class="poster-canvas"></canvas>
+<privacy-sheet />

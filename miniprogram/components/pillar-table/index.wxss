@@ -1,0 +1,20 @@
+.ptable {
+  display: grid;
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: var(--sp-2) var(--sp-3);
+}
+.ph, .rh, .pc {
+  min-height: var(--tap);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1rpx solid var(--line);
+  text-align: center;
+}
+.ph { color: var(--ink-2); font-size: var(--fs-aux); }
+.rh { color: var(--ink-2); font-size: var(--fs-aux); justify-content: flex-start; }
+.gz { font-size: var(--fs-title); }
+.wx { font-size: var(--fs-aux); color: var(--ink-2); margin-left: 4rpx; }
+.small { font-size: var(--fs-aux); }
+.changed { text-decoration: underline; text-underline-offset: 8rpx; color: var(--ink); }

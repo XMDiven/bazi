@@ -1,0 +1,12 @@
+.summary { padding: var(--sp-4) 0 var(--sp-3); }
+.summary-text {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  font-size: var(--fs-display);
+  font-weight: 600;
+  letter-spacing: 4rpx;
+}
+.group { white-space: nowrap; }
+.changed { text-decoration: underline; text-underline-offset: 8rpx; }
+.subline { margin-top: var(--sp-2); }
