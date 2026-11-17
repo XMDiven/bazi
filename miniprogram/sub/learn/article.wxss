@@ -1,1 +1,3 @@
-
+.article-title { margin-bottom: var(--sp-3); }
+.para { margin-bottom: var(--sp-3); }
+.example { margin-top: var(--sp-3); }

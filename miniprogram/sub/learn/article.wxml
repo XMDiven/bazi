@@ -1,1 +1,12 @@
-<view class="page"><view class="title">文章</view></view>
+<view class="page">
+  <empty-state wx:if="{{status === 'invalid'}}" text="没有找到这篇文章" />
+  <block wx:elif="{{status === 'ok'}}">
+    <view class="title article-title">{{article.title}}</view>
+    <view wx:for="{{article.paragraphs}}" wx:key="index" class="para">{{item}}</view>
+    <view wx:if="{{example}}" class="card example">
+      <view class="aux">示例</view>
+      <summary-header groups="{{example.groups}}" subline="{{example.subline}}" />
+      <view class="aux">{{example.note}}</view>
+    </view>
+  </block>
+</view>

@@ -1,1 +1,4 @@
-{ "navigationBarTitleText": "知识库", "usingComponents": {} }
+{
+  "navigationBarTitleText": "知识库",
+  "usingComponents": { "summary-header": "/components/summary-header/index", "empty-state": "/components/empty-state/index" }
+}

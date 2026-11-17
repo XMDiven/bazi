@@ -1,1 +1,37 @@
-<view class="page"><view class="title">我的</view></view>
+<view class="page">
+  <view class="aux me-header">{{header}}</view>
+
+  <view class="section-title">默认设置</view>
+  <view wx:if="{{settings}}" class="card">
+    <view class="row column">
+      <view class="label-row">
+        <text class="field-label">子时派别</text>
+        <text class="help link" data-id="K6" bindtap="openArticle" aria-label="子时派别说明">?</text>
+      </view>
+      <segmented id="settings-zi-sect" class="inline-seg" items="{{ziSectItems}}" value="{{settings.ziSect}}" bind:change="onZiSect" />
+    </view>
+    <view class="row">
+      <view class="label-row">
+        <text class="field-label">真太阳时</text>
+        <text class="help link" data-id="K5" bindtap="openArticle" aria-label="真太阳时说明">?</text>
+      </view>
+      <switch checked="{{settings.useTrueSolarTime}}" bindchange="onTrueSolar" />
+    </view>
+    <view class="row" bindtap="openCity">
+      <view class="label-row">
+        <text class="field-label">默认出生地</text>
+        <text class="help link" data-id="K5" catchtap="openArticle" aria-label="出生地说明">?</text>
+      </view>
+      <text>{{cityText}}</text>
+    </view>
+    <view class="aux settings-note">只影响之后的新换算</view>
+  </view>
+
+  <view class="card">
+    <view class="row" data-url="/sub/learn/index" bindtap="openPage"><text>知识库</text><text class="aux">›</text></view>
+    <view class="row" data-url="/sub/privacy/index" bindtap="openPage"><text>数据与隐私</text><text class="aux">›</text></view>
+    <button class="row plain-row" open-type="feedback"><text>意见反馈</text><text class="aux">›</text></button>
+    <view class="row" data-url="/sub/about/index" bindtap="openPage"><text>关于</text><text class="aux">›</text></view>
+  </view>
+</view>
+<city-sheet show="{{showCitySheet}}" value="{{settings.cityId}}" bind:select="onCitySelect" bind:close="closeCity" />
