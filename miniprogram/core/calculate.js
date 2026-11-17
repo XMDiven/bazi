@@ -9,6 +9,7 @@ const { shichenRange } = require('./shichen');
 const { validateInput } = require('./validate');
 const { findAdjacent, findJieOnDate, liChunOf } = require('./terms');
 const { hm } = require('./format');
+const { getBoundaryWarnings } = require('./boundary');
 
 const DST_MINUTES = -60;
 const SHENG_XIAO = { 子: '鼠', 丑: '牛', 寅: '虎', 卯: '兔', 辰: '龙', 巳: '蛇', 午: '马', 未: '羊', 申: '猴', 酉: '鸡', 戌: '狗', 亥: '猪' };
@@ -149,6 +150,9 @@ function calculate(input) {
     if (warning) warnings.push(warning);
   }
   const summary = summaryOf(pillars);
+  if (input.precision === 'exact') {
+    warnings.push(...getBoundaryWarnings({ beijingWall, localWall, ziSect: input.ziSect }));
+  }
   if (input.precision === 'shichen') {
     const warning = shichenWarning(solarDate, input, city, summary);
     if (warning) warnings.push(warning);
