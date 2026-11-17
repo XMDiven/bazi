@@ -1,1 +1,8 @@
-
+.subtitle { margin-bottom: var(--sp-3); }
+.mode-switch { margin-bottom: var(--sp-3); }
+.column { flex-direction: column; align-items: stretch; padding: var(--sp-2) 0; }
+.inline-seg { margin-top: var(--sp-2); }
+.submit { margin-top: var(--sp-4); font-size: var(--fs-title); }
+.rv-note { margin-top: var(--sp-2); }
+.dst-text { padding: var(--sp-2) 0 var(--sp-4); }
+.dst-btn { margin-bottom: var(--sp-2); }

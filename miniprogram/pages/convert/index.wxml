@@ -1,1 +1,72 @@
-<view class="page"><view class="title">换算</view></view>
+<view class="page">
+  <view class="aux subtitle">{{subtitle}}</view>
+
+  <view wx:if="{{showModeSwitch}}" class="seg mode-switch" role="tablist">
+    <view id="mode-birth" class="seg-item {{mode === 'birth' ? 'seg-on' : ''}}" data-key="birth" bindtap="onMode">出生信息</view>
+    <view id="mode-reverse" class="seg-item {{mode === 'reverse' ? 'seg-on' : ''}}" data-key="reverse" bindtap="onMode">四柱反查</view>
+  </view>
+
+  <!-- 出生信息 -->
+  <block wx:if="{{mode === 'birth'}}">
+    <view class="card">
+      <view id="date-field" class="row" bindtap="openDate">
+        <text class="field-label">日期与时间</text>
+        <view class="field-value">
+          <view>{{dateText}}</view>
+          <view class="aux">{{timeText}}</view>
+        </view>
+      </view>
+      <view wx:if="{{errors.date}}" class="field-error">{{errors.date}}</view>
+      <view wx:if="{{errors.time}}" class="field-error">{{errors.time}}</view>
+
+      <view class="row">
+        <text class="field-label">真太阳时</text>
+        <switch id="true-solar" checked="{{input.useTrueSolarTime}}" disabled="{{input.precision === 'unknown'}}" bindchange="onTrueSolar" />
+      </view>
+
+      <view id="city-field" class="row" bindtap="openCity">
+        <text class="field-label">出生地</text>
+        <text class="field-value {{cityText ? '' : 'placeholder'}}">{{cityText || (input.useTrueSolarTime ? '请选择' : '选填')}}</text>
+      </view>
+      <view wx:if="{{errors.city}}" class="field-error">{{errors.city}}</view>
+
+      <view class="row column">
+        <text class="field-label">子时派别</text>
+        <segmented id="zi-sect" class="inline-seg" items="{{ziSectItems}}" value="{{input.ziSect}}" bind:change="onZiSect" />
+      </view>
+    </view>
+
+    <button id="submit" class="btn-primary submit" bindtap="onSubmit">换算</button>
+  </block>
+
+  <!-- 四柱反查 -->
+  <block wx:else>
+    <view class="card">
+      <block wx:for="{{rvFields}}" wx:key="key">
+        <view id="{{item.id}}" class="row" data-field="{{item.key}}" bindtap="openRv">
+          <text class="field-label">{{item.label}}</text>
+          <text class="field-value {{rv[item.key] ? '' : 'placeholder'}}">{{rv[item.key] || (item.key === 'time' ? '不填' : '请选择')}}</text>
+        </view>
+        <view wx:if="{{rvErrors[item.key]}}" class="field-error">{{rvErrors[item.key]}}</view>
+      </block>
+      <view class="row column">
+        <text class="field-label">子时派别</text>
+        <segmented class="inline-seg" items="{{ziSectItems}}" value="{{rvSect}}" bind:change="onRvSect" />
+      </view>
+    </view>
+    <view class="aux rv-note">只列出 1900 年至今天的时刻，结果为北京时间。</view>
+    <button id="rv-submit" class="btn-primary submit" bindtap="onRvSubmit">反查</button>
+  </block>
+</view>
+
+<datetime-sheet show="{{showDateSheet}}" value="{{input}}" bind:confirm="onDateConfirm" bind:close="closeDate" />
+<city-sheet show="{{showCitySheet}}" value="{{input.cityId}}" bind:select="onCitySelect" bind:close="closeCity" />
+<ganzhi-sheet
+  show="{{!!rvSheetField}}" title="{{rvSheetTitle}}" options="{{rvSheetOptions}}" value="{{rv[rvSheetField]}}"
+  allowEmpty="{{rvSheetField === 'time'}}" bind:select="onRvSelect" bind:close="closeRv" />
+
+<sheet show="{{showDstSheet}}" title="这个时间是夏令时吗？" bind:close="closeDst">
+  <view class="dst-text">1986–1991 年夏季，全国时钟曾拨快 1 小时。如果这是当时钟表上的时间，换算时需要减去 1 小时。</view>
+  <button id="dst-yes" class="btn-primary dst-btn" bindtap="onDstYes">是，减去 1 小时</button>
+  <button id="dst-no" class="btn-plain dst-btn" bindtap="onDstNo">否，按原时间换算</button>
+</sheet>

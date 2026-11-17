@@ -90,3 +90,37 @@ page {
 }
 button::after { border: none; }
 .disclaimer { font-size: var(--fs-aux); color: var(--ink-2); padding: var(--sp-4) 0; }
+.seg {
+  display: flex;
+  background: var(--paper);
+  border: 1rpx solid var(--line);
+  border-radius: var(--radius);
+  padding: 4rpx;
+}
+.seg-item {
+  flex: 1;
+  min-height: 72rpx;
+  line-height: 72rpx;
+  text-align: center;
+  font-size: var(--fs-body);
+  color: var(--ink-2);
+  border-radius: 12rpx;
+}
+.seg-on {
+  background: var(--surface);
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.field-label { color: var(--ink-2); }
+.field-value { text-align: right; }
+.placeholder { color: var(--ink-2); }
+.section-title { font-size: var(--fs-title); font-weight: 600; margin: var(--sp-4) 0 var(--sp-2); }
+.link { color: var(--accent); }
+.list-item { background: var(--surface); border-radius: var(--radius); padding: var(--sp-3) var(--sp-4); margin-bottom: var(--sp-2); }
+
+/* 开关选中色跟随令牌（switch 的 color 属性不支持 CSS 变量） */
+.wx-switch-input.wx-switch-input-checked {
+  background-color: var(--accent) !important;
+  border-color: var(--accent) !important;
+}
