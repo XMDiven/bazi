@@ -1,0 +1,21 @@
+{
+  "description": "干支历换算",
+  "miniprogramRoot": "miniprogram/",
+  "appid": "touristappid",
+  "projectname": "ganzhi-calendar",
+  "compileType": "miniprogram",
+  "libVersion": "3.4.10",
+  "setting": {
+    "es6": true,
+    "enhance": true,
+    "minified": true,
+    "postcss": true,
+    "packNpmManually": true,
+    "packNpmRelationList": [
+      { "packageJsonPath": "./package.json", "miniprogramNpmDistDir": "./miniprogram/" }
+    ],
+    "ignoreUploadUnusedFiles": true
+  },
+  "condition": {},
+  "editorSetting": { "tabIndent": "insertSpaces", "tabSize": 2 }
+}

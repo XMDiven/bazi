@@ -1,0 +1,23 @@
+{
+  "name": "bazi",
+  "version": "1.0.0",
+  "private": true,
+  "description": "干支历换算 微信小程序",
+  "license": "UNLICENSED",
+  "type": "commonjs",
+  "scripts": {
+    "test": "node --test \"tests/**/*.test.js\"",
+    "test:tz": "TZ=America/Los_Angeles npm test && TZ=Asia/Kolkata npm test && TZ=UTC npm test",
+    "test:coverage": "node --test --experimental-test-coverage --test-coverage-include=\"miniprogram/core/**\" --test-coverage-exclude=\"miniprogram/core/data/**\" --test-coverage-lines=90 \"tests/**/*.test.js\"",
+    "check:copy": "node scripts/check-copy.js",
+    "verify:reverse": "node scripts/verify-reverse.js",
+    "e2e": "node --test \"e2e/**/*.test.js\"",
+    "verify": "npm test && npm run test:tz && npm run test:coverage && npm run check:copy"
+  },
+  "dependencies": {
+    "lunar-javascript": "1.7.8"
+  },
+  "devDependencies": {
+    "miniprogram-automator": "0.13.0"
+  }
+}

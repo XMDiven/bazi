@@ -1,0 +1,92 @@
+/* 设计令牌（PRD 13.2 / 13.3）。之后所有样式只引用这些变量。 */
+page {
+  --paper: #F7F5F0;
+  --surface: #FFFFFF;
+  --ink: #1C1C1A;
+  --ink-2: #6B6862;
+  --line: #E4E0D8;
+  --accent: #A8432E;
+  --on-accent: #FFFFFF;
+  --notice: #F4EEDF;
+
+  --fs-display: 64rpx;
+  --fs-title: 36rpx;
+  --fs-body: 30rpx;
+  --fs-aux: 26rpx;
+  --fs-min: 24rpx;
+
+  --sp-1: 8rpx;
+  --sp-2: 16rpx;
+  --sp-3: 24rpx;
+  --sp-4: 32rpx;
+  --sp-5: 48rpx;
+  --radius: 16rpx;
+  --tap: 88rpx;
+
+  background: var(--paper);
+  color: var(--ink);
+  font-size: var(--fs-body);
+  line-height: 1.6;
+  font-variant-numeric: tabular-nums;
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", "Microsoft YaHei", sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  page {
+    --paper: #141413;
+    --surface: #1E1E1C;
+    --ink: #ECEAE4;
+    --ink-2: #A29F97;
+    --line: #2E2D2A;
+    --accent: #D9735C;
+    --on-accent: #141413;
+    --notice: #2A261C;
+  }
+}
+
+.page {
+  max-width: 750rpx;
+  margin: 0 auto;
+  padding: var(--sp-4);
+  box-sizing: border-box;
+}
+
+.card {
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: var(--sp-4);
+  margin-bottom: var(--sp-3);
+}
+
+.title { font-size: var(--fs-title); font-weight: 600; }
+.aux { font-size: var(--fs-aux); color: var(--ink-2); }
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: var(--tap);
+  border-bottom: 1rpx solid var(--line);
+}
+.row:last-child { border-bottom: none; }
+.field-error { font-size: var(--fs-aux); color: var(--accent); padding-bottom: var(--sp-2); }
+
+.btn-primary {
+  background: var(--accent);
+  color: var(--on-accent);
+  font-size: var(--fs-body);
+  border-radius: var(--radius);
+  min-height: var(--tap);
+  line-height: var(--tap);
+  border: none;
+}
+.btn-plain {
+  background: var(--surface);
+  color: var(--ink);
+  font-size: var(--fs-body);
+  border-radius: var(--radius);
+  min-height: var(--tap);
+  line-height: var(--tap);
+  border: 1rpx solid var(--line);
+}
+button::after { border: none; }
+.disclaimer { font-size: var(--fs-aux); color: var(--ink-2); padding: var(--sp-4) 0; }
