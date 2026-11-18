@@ -1,16 +1,13 @@
-const { ME_HEADER, ZI_SECT_LABEL } = require('../../core/constants');
+const { ME_HEADER } = require('../../core/constants');
+const { METHOD_COPY, ZI_SECT_ITEMS } = require('../../core/methodHints');
 const { getCityById } = require('../../core/cities');
 const storage = require('../../services/storage');
-
-const ZI_SECT_ITEMS = [
-  { key: 'late23', text: ZI_SECT_LABEL.late23 },
-  { key: 'midnight', text: ZI_SECT_LABEL.midnight },
-];
 
 Page({
   data: {
     header: ME_HEADER,
     ziSectItems: ZI_SECT_ITEMS,
+    copy: METHOD_COPY,
     settings: null,
     cityText: '',
     showCitySheet: false,

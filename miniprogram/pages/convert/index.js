@@ -1,4 +1,4 @@
-const { SUBTITLE, ZI_SECT_LABEL } = require('../../core/constants');
+const { SUBTITLE } = require('../../core/constants');
 const { FEATURES } = require('../../core/features');
 const { beijingNow } = require('../../core/wallTime');
 const { validateInput } = require('../../core/validate');
@@ -10,11 +10,9 @@ const { JIA_ZI, monthOptionsForYear, timeOptionsForDay } = require('../../core/p
 const storage = require('../../services/storage');
 const { track } = require('../../services/track');
 const { APP_SHARE_TITLE } = require('../../core/shareText');
+const { METHOD_COPY, ZI_SECT_ITEMS, ziSectMatters, trueSolarPreview } = require('../../core/methodHints');
+const { TERMS } = require('../../core/articles');
 
-const ZI_SECT_ITEMS = [
-  { key: 'late23', text: ZI_SECT_LABEL.late23 },
-  { key: 'midnight', text: ZI_SECT_LABEL.midnight },
-];
 const FIELD_ORDER = ['date', 'time', 'city'];
 const FIELD_SELECTOR = { date: '#date-field', time: '#date-field', city: '#city-field' };
 const RV_FIELDS = [
@@ -54,7 +52,11 @@ Page({
     showModeSwitch: FEATURES.reverseLookup,
     mode: 'birth',
     ziSectItems: ZI_SECT_ITEMS,
+    copy: METHOD_COPY,
     input: null,
+    ziSectVisible: false,
+    solarPreview: null,
+    tip: { show: false, term: '', def: '', article: '' },
     dateText: '',
     timeText: '',
     cityText: '',
@@ -94,6 +96,9 @@ Page({
       dateText: dateText(input),
       timeText: timeText(input),
       cityText: city ? `${city.name} · ${city.province}` : '',
+      // 隐藏子时派别时不改 input.ziSect，用户已选的值保留（PRD 5.5）
+      ziSectVisible: ziSectMatters(input),
+      solarPreview: trueSolarPreview(input),
     });
   },
 
@@ -209,6 +214,21 @@ Page({
     const q = [`y=${encodeURIComponent(rv.year)}`, `m=${encodeURIComponent(rv.month)}`, `d=${encodeURIComponent(rv.day)}`,
       `t=${encodeURIComponent(rv.time || '')}`, `sect=${rvSect}`].join('&');
     wx.navigateTo({ url: `/pages/reverse/index?${q}` });
+  },
+
+  // ---------- 术语卡 ----------
+  openTip(e) {
+    const name = e.currentTarget.dataset.term;
+    const term = TERMS[name];
+    this.setData({ tip: { show: true, term: name, def: term.def, article: term.article } });
+    track('term_tip_open', { term: term.id });
+  },
+  closeTip() {
+    this.setData({ 'tip.show': false });
+  },
+  onReadArticle(e) {
+    this.setData({ 'tip.show': false });
+    wx.navigateTo({ url: `/sub/learn/article?id=${e.detail.article}` });
   },
 
   // 右下角分享按钮与右上角菜单共用：只分享换算首页，不带表单里的任何输入

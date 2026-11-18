@@ -1,4 +1,4 @@
-const { ZI_SECT_LABEL } = require('../../core/constants');
+const { METHOD_COPY, ZI_SECT_ITEMS } = require('../../core/methodHints');
 const { decodeInput, encodeInput } = require('../../core/queryCodec');
 const { calculate } = require('../../core/calculate');
 const { buildResultView, diffPillars } = require('../../core/resultView');
@@ -12,11 +12,13 @@ const posterCanvas = require('../../services/posterCanvas');
 
 const SOURCES = ['convert', 'archive', 'recent', 'reverse', 'almanac', 'share'];
 const STORAGE_FULL_TIP = '保存失败，可在「我的 › 数据与隐私」清理';
-const METHOD_TITLES = { zi_sect: '子时派别', true_solar: '真太阳时', dst: '夏令时' };
+// 弹层用大白话标题 + 术语副标题（PRD 7.2 / 5.5）；算法条标签保持简写
+const METHOD_TITLES = { zi_sect: METHOD_COPY.ziSect.title, true_solar: METHOD_COPY.trueSolar.title, dst: '夏令时' };
+const METHOD_HINTS = { zi_sect: METHOD_COPY.ziSect.hint, true_solar: METHOD_COPY.trueSolar.hint, dst: '' };
 
 function methodOptions(kind, input) {
   if (kind === 'zi_sect') {
-    return ['late23', 'midnight'].map(key => ({ key, text: ZI_SECT_LABEL[key], selected: input.ziSect === key }));
+    return ZI_SECT_ITEMS.map(item => ({ key: item.key, text: `${item.text}（${item.sub}）`, selected: input.ziSect === item.key }));
   }
   if (kind === 'true_solar') {
     return [
@@ -39,6 +41,7 @@ Page({
     profileName: '',
     methodKind: '',
     methodTitle: '',
+    methodHint: '',
     methodOptions: [],
     methodNeedsCity: false,
     showCitySheet: false,
@@ -95,6 +98,7 @@ Page({
     this.setData({
       methodKind: kind,
       methodTitle: METHOD_TITLES[kind],
+      methodHint: METHOD_HINTS[kind],
       methodOptions: methodOptions(kind, this.input),
       methodNeedsCity: false,
     });

@@ -1,8 +1,6 @@
 .me-header { padding: var(--sp-3) 0; }
 .column { flex-direction: column; align-items: stretch; padding: var(--sp-2) 0; }
 .inline-seg { margin-top: var(--sp-2); }
-.label-row { display: flex; align-items: center; gap: var(--sp-2); }
-.help { min-width: 56rpx; min-height: 56rpx; line-height: 56rpx; text-align: center; border: 1rpx solid var(--line); border-radius: 50%; font-size: var(--fs-aux); }
 .settings-note { padding-top: var(--sp-2); }
 /* 需要压过基础库 v2 的 button:not([size=mini]) { width:184px; margin:0 auto } 与 font-weight:700 */
 .card .plain-row {

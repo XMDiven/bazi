@@ -1,7 +1,7 @@
 Component({
   options: { styleIsolation: 'apply-shared' },
   properties: {
-    items: { type: Array, value: [] }, // [{key, text}]
+    items: { type: Array, value: [] }, // [{key, text, sub?}]
     value: { type: String, value: '' },
   },
   methods: {

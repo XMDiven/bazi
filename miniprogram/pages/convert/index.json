@@ -5,6 +5,7 @@
     "sheet": "/components/sheet/index",
     "datetime-sheet": "/components/datetime-sheet/index",
     "city-sheet": "/components/city-sheet/index",
-    "ganzhi-sheet": "/components/ganzhi-sheet/index"
+    "ganzhi-sheet": "/components/ganzhi-sheet/index",
+    "term-tip": "/components/term-tip/index"
   }
 }

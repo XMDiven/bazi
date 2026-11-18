@@ -1,4 +1,3 @@
-const { ZI_SECT_LABEL } = require('../../core/constants');
 const { decodeInput, encodeInput } = require('../../core/queryCodec');
 const { validateInput } = require('../../core/validate');
 const { calculate } = require('../../core/calculate');
@@ -7,11 +6,8 @@ const { dateText, timeText } = require('../../core/pickerModel');
 const R = require('../../core/records');
 const storage = require('../../services/storage');
 const { track } = require('../../services/track');
+const { METHOD_COPY, ZI_SECT_ITEMS } = require('../../core/methodHints');
 
-const ZI_SECT_ITEMS = [
-  { key: 'late23', text: ZI_SECT_LABEL.late23 },
-  { key: 'midnight', text: ZI_SECT_LABEL.midnight },
-];
 const NAME_ERRORS = {
   NAME_REQUIRED: '请填写称呼',
   NAME_TOO_LONG: '称呼最多 10 个字',
@@ -39,6 +35,7 @@ Page({
     summary: '',
     errors: {},
     ziSectItems: ZI_SECT_ITEMS,
+    copy: METHOD_COPY,
     showDateSheet: false,
     showCitySheet: false,
   },

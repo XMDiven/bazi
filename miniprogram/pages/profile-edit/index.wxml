@@ -16,7 +16,10 @@
       <view wx:if="{{errors.time}}" class="field-error">{{errors.time}}</view>
 
       <view class="row">
-        <text class="field-label">真太阳时</text>
+        <view class="setting-head">
+          <text class="setting-title">{{copy.trueSolar.title}}</text>
+          <view class="aux setting-hint">{{copy.trueSolar.hint}}</view>
+        </view>
         <switch checked="{{input.useTrueSolarTime}}" disabled="{{input.precision === 'unknown'}}" bindchange="onTrueSolar" />
       </view>
       <view class="row" bindtap="openCity">
@@ -26,7 +29,8 @@
       <view wx:if="{{errors.city}}" class="field-error">{{errors.city}}</view>
 
       <view class="row column">
-        <text class="field-label">子时派别</text>
+        <text class="setting-title">{{copy.ziSect.title}}</text>
+        <view class="aux setting-hint">{{copy.ziSect.hint}}</view>
         <segmented class="inline-seg" items="{{ziSectItems}}" value="{{input.ziSect}}" bind:change="onZiSect" />
       </view>
     </view>

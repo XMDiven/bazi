@@ -12,3 +12,4 @@
 .poster-preview { width: 100%; border-radius: var(--radius); margin-bottom: var(--sp-3); }
 .poster-denied { margin-bottom: var(--sp-3); }
 .poster-canvas { position: fixed; left: -9999px; top: 0; width: 600px; height: 800px; }
+.method-hint { padding-bottom: var(--sp-2); }

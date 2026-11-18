@@ -20,8 +20,18 @@
       <view wx:if="{{errors.time}}" class="field-error">{{errors.time}}</view>
 
       <view class="row">
-        <text class="field-label">真太阳时</text>
+        <view class="setting-head">
+          <view class="label-row">
+            <text class="setting-title">{{copy.trueSolar.title}}</text>
+            <text class="help link" data-term="真太阳时" bindtap="openTip" aria-label="真太阳时说明">?</text>
+          </view>
+          <view class="aux setting-hint">{{copy.trueSolar.hint}}</view>
+        </view>
         <switch id="true-solar" checked="{{input.useTrueSolarTime}}" disabled="{{input.precision === 'unknown'}}" bindchange="onTrueSolar" />
+      </view>
+      <view wx:if="{{solarPreview}}" id="solar-preview" class="aux solar-preview">
+        <view>{{solarPreview.shift}}</view>
+        <view>{{solarPreview.change}}</view>
       </view>
 
       <view id="city-field" class="row" bindtap="openCity">
@@ -30,8 +40,12 @@
       </view>
       <view wx:if="{{errors.city}}" class="field-error">{{errors.city}}</view>
 
-      <view class="row column">
-        <text class="field-label">子时派别</text>
+      <view wx:if="{{ziSectVisible}}" id="zi-sect-row" class="row column">
+        <view class="label-row">
+          <text class="setting-title">{{copy.ziSect.title}}</text>
+          <text class="help link" data-term="子时派别" bindtap="openTip" aria-label="子时派别说明">?</text>
+        </view>
+        <view class="aux setting-hint">{{copy.ziSect.hint}}</view>
         <segmented id="zi-sect" class="inline-seg" items="{{ziSectItems}}" value="{{input.ziSect}}" bind:change="onZiSect" />
       </view>
     </view>
@@ -50,7 +64,11 @@
         <view wx:if="{{rvErrors[item.key]}}" class="field-error">{{rvErrors[item.key]}}</view>
       </block>
       <view class="row column">
-        <text class="field-label">子时派别</text>
+        <view class="label-row">
+          <text class="setting-title">{{copy.ziSect.title}}</text>
+          <text class="help link" data-term="子时派别" bindtap="openTip" aria-label="子时派别说明">?</text>
+        </view>
+        <view class="aux setting-hint">{{copy.ziSect.hint}}</view>
         <segmented class="inline-seg" items="{{ziSectItems}}" value="{{rvSect}}" bind:change="onRvSect" />
       </view>
     </view>
@@ -63,6 +81,7 @@
   <button id="share-app" class="share-fab" open-type="share" aria-label="分享给好友">分享</button>
 </view>
 
+<term-tip show="{{tip.show}}" term="{{tip.term}}" def="{{tip.def}}" article="{{tip.article}}" bind:read="onReadArticle" bind:close="closeTip" />
 <datetime-sheet show="{{showDateSheet}}" value="{{input}}" bind:confirm="onDateConfirm" bind:close="closeDate" />
 <city-sheet show="{{showCitySheet}}" value="{{input.cityId}}" bind:select="onCitySelect" bind:close="closeCity" />
 <ganzhi-sheet

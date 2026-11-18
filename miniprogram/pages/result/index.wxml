@@ -53,6 +53,7 @@
 </view>
 
 <sheet show="{{!!methodKind}}" title="{{methodTitle}}" bind:close="closeMethod">
+  <view wx:if="{{methodHint}}" class="aux method-hint">{{methodHint}}</view>
   <view wx:for="{{methodOptions}}" wx:key="key" class="row method-option {{item.selected ? 'option-on' : ''}}" data-key="{{item.key}}" bindtap="onMethodOption">
     <text>{{item.text}}</text><text wx:if="{{item.selected}}">✓</text>
   </view>
