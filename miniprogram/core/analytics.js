@@ -16,7 +16,7 @@ const EVENT_SCHEMA = {
   term_tip_open: { term: TERM_IDS },
   profile_save: {},
   copy: {},
-  share: {},
+  share: { from: ['result', 'convert'] },
   poster_save: {},
   reverse_submit: { result_bucket: ['0', '1', '2-5', '6+'] },
   almanac_day_open: {},

@@ -16,6 +16,8 @@ test('valid events pass', () => {
   assert.ok(buildEvent('article_view', { article: 'K10' }));
   assert.ok(buildEvent('term_tip_open', { term: 'nayin' }));
   assert.ok(buildEvent('app_error', { where: 'result', code: 'calc' }));
+  assert.ok(buildEvent('share', { from: 'result' }));
+  assert.ok(buildEvent('share', { from: 'convert' }));
 });
 test('bad events throw', () => {
   assert.throws(() => buildEvent('nope', {}), /BAD_EVENT/);
@@ -23,4 +25,6 @@ test('bad events throw', () => {
   assert.throws(() => buildEvent('result_view', { source: '1990-05-12' }), /BAD_EVENT/);
   assert.throws(() => buildEvent('result_view', {}), /BAD_EVENT/);
   assert.throws(() => buildEvent('derivation_expand', { x: 1 }), /BAD_EVENT/);
+  assert.throws(() => buildEvent('share', {}), /BAD_EVENT/);
+  assert.throws(() => buildEvent('share', { from: 'almanac' }), /BAD_EVENT/);
 });

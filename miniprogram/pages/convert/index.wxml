@@ -1,4 +1,4 @@
-<view class="page">
+<view class="page with-fab">
   <view class="aux subtitle">{{subtitle}}</view>
 
   <view wx:if="{{showModeSwitch}}" class="seg mode-switch" role="tablist">
@@ -57,6 +57,10 @@
     <view class="aux rv-note">只列出 1900 年至今天的时刻，结果为北京时间。</view>
     <button id="rv-submit" class="btn-primary submit" bindtap="onRvSubmit">反查</button>
   </block>
+</view>
+
+<view class="fab-wrap">
+  <button id="share-app" class="share-fab" open-type="share" aria-label="分享给好友">分享</button>
 </view>
 
 <datetime-sheet show="{{showDateSheet}}" value="{{input}}" bind:confirm="onDateConfirm" bind:close="closeDate" />

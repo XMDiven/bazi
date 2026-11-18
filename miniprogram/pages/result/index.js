@@ -234,7 +234,7 @@ Page({
 
   onShareAppMessage() {
     if (!this.result) return { path: '/pages/convert/index' };
-    track('share');
+    track('share', { from: 'result' });
     return { title: buildShareTitle(this.result), path: '/pages/convert/index' };
   },
 });

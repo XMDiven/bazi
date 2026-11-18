@@ -9,6 +9,7 @@ const { dateText, timeText } = require('../../core/pickerModel');
 const { JIA_ZI, monthOptionsForYear, timeOptionsForDay } = require('../../core/pillarOptions');
 const storage = require('../../services/storage');
 const { track } = require('../../services/track');
+const { APP_SHARE_TITLE } = require('../../core/shareText');
 
 const ZI_SECT_ITEMS = [
   { key: 'late23', text: ZI_SECT_LABEL.late23 },
@@ -208,5 +209,11 @@ Page({
     const q = [`y=${encodeURIComponent(rv.year)}`, `m=${encodeURIComponent(rv.month)}`, `d=${encodeURIComponent(rv.day)}`,
       `t=${encodeURIComponent(rv.time || '')}`, `sect=${rvSect}`].join('&');
     wx.navigateTo({ url: `/pages/reverse/index?${q}` });
+  },
+
+  // 右下角分享按钮与右上角菜单共用：只分享换算首页，不带表单里的任何输入
+  onShareAppMessage() {
+    track('share', { from: 'convert' });
+    return { title: APP_SHARE_TITLE, path: '/pages/convert/index' };
   },
 });

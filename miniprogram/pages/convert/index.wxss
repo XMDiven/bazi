@@ -6,3 +6,27 @@
 .rv-note { margin-top: var(--sp-2); }
 .dst-text { padding: var(--sp-2) 0 var(--sp-4); }
 .dst-btn { margin-bottom: var(--sp-2); }
+
+/* 右下角悬浮分享。tab 页可视区在 tabBar 之上，不用再加安全区。
+   用 .fab-wrap .share-fab 压过基础库 v2 的 button 默认宽度、居中和加粗 */
+page { --fab: 112rpx; }
+.with-fab { padding-bottom: calc(var(--fab) + var(--sp-5) * 2); }
+.fab-wrap .share-fab {
+  position: fixed;
+  right: var(--sp-4);
+  bottom: var(--sp-5);
+  z-index: 50;
+  width: var(--fab);
+  height: var(--fab);
+  margin: 0;
+  padding: 0;
+  border-radius: 50%;
+  border: 1rpx solid var(--line);
+  background: var(--surface);
+  color: var(--ink);
+  font-size: var(--fs-aux);
+  font-weight: normal;
+  line-height: var(--fab);
+  text-align: center;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.08);
+}

@@ -1,6 +1,6 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
-const { buildCopyText, buildShareTitle } = require('../../miniprogram/core/shareText');
+const { buildCopyText, buildShareTitle, APP_SHARE_TITLE } = require('../../miniprogram/core/shareText');
 const { calculate } = require('../../miniprogram/core/calculate');
 const { makeInput } = require('../helpers');
 
@@ -15,3 +15,4 @@ test('copy text excludes city', () => {
   assert.equal(t.split('\n')[2], '子时派别 23:00 换日 · 真太阳时 开 · 夏令时 已扣除');
 });
 test('share title', () => assert.equal(buildShareTitle(calculate(makeInput())), '四柱干支：庚午 辛巳 丁丑 丙午'));
+test('app share title has no birth data', () => assert.equal(APP_SHARE_TITLE, '干支历换算 · 公历农历与四柱干支对照'));

@@ -19,4 +19,7 @@ function buildCopyText(result) {
 
 const buildShareTitle = result => `四柱干支：${result.summary}`;
 
-module.exports = { buildCopyText, buildShareTitle };
+// 换算页分享：固定标题，不带任何输入
+const APP_SHARE_TITLE = `${APP_NAME} · 公历农历与四柱干支对照`;
+
+module.exports = { buildCopyText, buildShareTitle, APP_SHARE_TITLE };
