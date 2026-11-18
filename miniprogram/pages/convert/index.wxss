@@ -8,14 +8,33 @@
 .dst-text { padding: var(--sp-2) 0 var(--sp-4); }
 .dst-btn { margin-bottom: var(--sp-2); }
 
-/* 右下角悬浮分享。tab 页可视区在 tabBar 之上，不用再加安全区。
-   用 .fab-wrap .share-fab 压过基础库 v2 的 button 默认宽度、居中和加粗 */
-page { --fab: 112rpx; }
-.with-fab { padding-bottom: calc(var(--fab) + var(--sp-5) * 2); }
+/* 底部固定一行免责声明（短版），分享按钮浮在它上方。
+   tab 页可视区在 tabBar 之上，不用再加安全区。 */
+page { --fab: 112rpx; --disclaimer-h: 64rpx; }
+.with-fab { padding-bottom: calc(var(--disclaimer-h) + var(--fab) + var(--sp-4) * 2); }
+.disclaimer-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 40;
+  height: var(--disclaimer-h);
+  line-height: var(--disclaimer-h);
+  padding: 0 var(--sp-4);
+  background: var(--paper);
+  color: var(--ink-2);
+  font-size: var(--fs-min);
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 用 .fab-wrap .share-fab 压过基础库 v2 的 button 默认宽度、居中和加粗 */
 .fab-wrap .share-fab {
   position: fixed;
   right: var(--sp-4);
-  bottom: var(--sp-5);
+  bottom: calc(var(--disclaimer-h) + var(--sp-4));
   z-index: 50;
   width: var(--fab);
   height: var(--fab);

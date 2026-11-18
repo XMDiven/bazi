@@ -1,4 +1,4 @@
-const { SUBTITLE } = require('../../core/constants');
+const { SUBTITLE, DISCLAIMER_SHORT } = require('../../core/constants');
 const { FEATURES } = require('../../core/features');
 const { beijingNow } = require('../../core/wallTime');
 const { validateInput } = require('../../core/validate');
@@ -49,6 +49,7 @@ function pruneReverse(rv, sect) {
 Page({
   data: {
     subtitle: SUBTITLE,
+    disclaimer: DISCLAIMER_SHORT,
     showModeSwitch: FEATURES.reverseLookup,
     mode: 'birth',
     ziSectItems: ZI_SECT_ITEMS,

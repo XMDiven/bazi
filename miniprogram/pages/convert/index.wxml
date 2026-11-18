@@ -77,6 +77,8 @@
   </block>
 </view>
 
+<view id="disclaimer" class="disclaimer-bar">{{disclaimer}}</view>
+
 <view class="fab-wrap">
   <button id="share-app" class="share-fab" open-type="share" aria-label="分享给好友">分享</button>
 </view>

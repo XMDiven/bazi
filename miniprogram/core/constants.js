@@ -1,6 +1,8 @@
 const APP_NAME = '干支历换算';
 const SUBTITLE = '公历、农历与干支历换算';
 const DISCLAIMER = '本工具仅提供传统干支历法的日期换算与文化科普，不提供任何命运解读或预测，请理性看待传统文化。';
+// 换算页底栏一行放不下原文，只在该处使用短版（PRD 2.4）；其余位置一律用原文
+const DISCLAIMER_SHORT = '仅供历法换算与文化科普，不提供命运解读';
 const ME_HEADER = '全部数据仅保存在这台手机上';
 
 const MIN_DATE = { year: 1900, month: 1, day: 1 };
@@ -21,7 +23,7 @@ const CHANGELOG = [
 ];
 
 module.exports = {
-  APP_NAME, SUBTITLE, DISCLAIMER, ME_HEADER,
+  APP_NAME, SUBTITLE, DISCLAIMER, DISCLAIMER_SHORT, ME_HEADER,
   MIN_DATE, MAX_DATE, ZI_SECT_TO_LIB, ZI_SECT_LABEL,
   LIMITS, BOUNDARY, STORAGE_KEYS, DEFAULT_SETTINGS, CHANGELOG,
 };
