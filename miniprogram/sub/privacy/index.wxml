@@ -1,0 +1,23 @@
+<view class="page">
+  <view class="card policy">
+    <view class="block-title">隐私说明</view>
+    <view>所有换算都在这台手机上完成，本工具没有服务器，不发起任何网络请求，不接入第三方 SDK。</view>
+    <view>不登录，不获取你的微信身份标识、头像、昵称、位置或手机号。</view>
+    <view>本地保存的数据只有：档案（称呼与输入，最多 100 条）、最近换算记录（最多 20 条）、默认设置和上次输入。这些数据只在本机，删除小程序或在下方清除后即不再保留。</view>
+    <view>本工具只用到两项隐私相关能力：点“复制”时写入剪贴板；在图片预览中点“保存”时保存图片到相册。首次使用时会请你同意《干支历换算隐私保护指引》，不同意时本次操作不生效。</view>
+    <view>使用统计只用微信内置的数据分析，记录功能的使用方式，不包含出生日期、时间、干支、城市或称呼。</view>
+  </view>
+
+  <view class="card">
+    <view id="copy-profiles" class="row" bindtap="onCopyProfiles"><text>复制全部档案</text><text class="aux">换机时自行保存</text></view>
+    <view id="clear-recent" class="row" bindtap="onClearRecent"><text>清空最近</text><text class="aux">›</text></view>
+    <view id="clear-all" class="row danger" bindtap="openClearAll"><text>清除全部数据</text><text class="aux">›</text></view>
+  </view>
+</view>
+
+<sheet show="{{showClearAll}}" title="清除全部数据" bind:close="closeClearAll">
+  <view class="clear-text">将删除全部档案、最近记录和设置，无法恢复。请输入“清除”二字确认。</view>
+  <input id="clear-confirm-input" class="confirm-input" value="{{confirmText}}" placeholder="清除" bindinput="onConfirmInput" />
+  <button id="clear-all-confirm" class="btn-primary" disabled="{{!canClear}}" bindtap="onClearAll">清除全部数据</button>
+</sheet>
+<privacy-sheet />

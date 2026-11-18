@@ -1,0 +1,9 @@
+<sheet show="{{show}}" title="隐私保护提示" bind:close="onDisagree">
+  <view class="privacy-text">
+    使用此功能前，请阅读并同意<text class="privacy-link" bindtap="openContract">《干支历换算隐私保护指引》</text>。
+  </view>
+  <view class="privacy-actions">
+    <button class="btn-plain privacy-btn" bindtap="onDisagree">不同意</button>
+    <button id="privacy-agree" class="btn-primary privacy-btn" open-type="agreePrivacyAuthorization" bindagreeprivacyauthorization="onAgree">同意</button>
+  </view>
+</sheet>

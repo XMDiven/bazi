@@ -1,0 +1,17 @@
+.bar-space { height: calc(136rpx + env(safe-area-inset-bottom)); }
+.bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 50;
+  max-width: 750rpx;
+  margin: 0 auto;
+  display: flex;
+  gap: var(--sp-2);
+  align-items: center;
+  background: var(--surface);
+  border-top: 1rpx solid var(--line);
+  padding: var(--sp-3) var(--sp-4) calc(var(--sp-3) + env(safe-area-inset-bottom));
+  box-sizing: border-box;
+}

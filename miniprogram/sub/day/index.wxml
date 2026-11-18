@@ -1,0 +1,25 @@
+<view class="page">
+  <empty-state wx:if="{{status === 'invalid'}}" text="没能读取这一天" />
+  <block wx:elif="{{status === 'ok'}}">
+    <view class="card">
+      <view class="title">{{detail.solarText}}</view>
+      <view>{{detail.lunarText}} · {{detail.shengXiao}}</view>
+      <view>{{detail.ganzhiText}}</view>
+      <view wx:if="{{detail.term}}" class="link" data-term="节" bindtap="onTerm">{{detail.term.name}} {{detail.term.timeText}} 交节</view>
+      <view wx:if="{{detail.festivals.length}}" class="aux">{{festivalText}}</view>
+    </view>
+
+    <view wx:if="{{detail.hours.length}}" class="card">
+      <view class="block-title">十二时辰干支</view>
+      <view wx:for="{{detail.hours}}" wx:key="name" class="row hour-row">
+        <text class="hour-name">{{item.name}}</text>
+        <text class="aux hour-range">{{item.range}}</text>
+        <text class="hour-gz">{{item.ganzhi}}</text>
+        <text wx:if="{{item.note}}" class="aux link hour-note" data-term="子时派别" bindtap="onTerm">{{item.note}}</text>
+      </view>
+    </view>
+
+    <button id="use-day" class="btn-primary" bindtap="onUseDay">用这一天换算</button>
+  </block>
+</view>
+<term-tip show="{{tip.show}}" term="{{tip.term}}" def="{{tip.def}}" article="{{tip.article}}" bind:read="onReadArticle" bind:close="closeTip" />

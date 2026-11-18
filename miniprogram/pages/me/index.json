@@ -1,0 +1,4 @@
+{
+  "navigationBarTitleText": "我的",
+  "usingComponents": { "segmented": "/components/segmented/index", "city-sheet": "/components/city-sheet/index" }
+}

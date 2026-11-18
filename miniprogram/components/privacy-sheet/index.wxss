@@ -1,0 +1,4 @@
+.privacy-text { padding: var(--sp-3) 0 var(--sp-4); }
+.privacy-link { color: var(--accent); }
+.privacy-actions { display: flex; gap: var(--sp-3); }
+.privacy-btn { flex: 1; }

@@ -1,0 +1,4 @@
+{
+  "navigationBarTitleText": "日详情",
+  "usingComponents": { "term-tip": "/components/term-tip/index", "empty-state": "/components/empty-state/index" }
+}

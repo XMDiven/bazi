@@ -1,0 +1,36 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-auto-rows: auto;
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: var(--sp-2);
+}
+.head { text-align: center; padding: var(--sp-1) 0; }
+.day-cell {
+  height: 112rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.out { opacity: 0.35; }
+.num {
+  width: 60rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: center;
+  border-radius: 50%;
+  border: 2rpx solid transparent;
+  font-size: var(--fs-body);
+}
+.today { background: var(--accent); color: var(--on-accent); }
+.selected { border-color: var(--accent); }
+.sub {
+  font-size: var(--fs-min);
+  color: var(--ink-2);
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 100%;
+}
+.sub-strong { color: var(--ink); }

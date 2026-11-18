@@ -1,0 +1,2 @@
+<view class="bar-space"></view>
+<view class="bar"><slot></slot></view>

@@ -1,0 +1,41 @@
+{
+  "pages": [
+    "pages/convert/index",
+    "pages/result/index",
+    "pages/reverse/index",
+    "pages/almanac/index",
+    "pages/archive/index",
+    "pages/profile-edit/index",
+    "pages/me/index"
+  ],
+  "subPackages": [
+    {
+      "root": "sub",
+      "pages": ["day/index", "terms/index", "learn/index", "learn/article", "privacy/index", "about/index"]
+    }
+  ],
+  "window": {
+    "navigationBarTitleText": "干支历换算",
+    "navigationBarBackgroundColor": "@navBg",
+    "navigationBarTextStyle": "@navText",
+    "backgroundColor": "@pageBg",
+    "backgroundTextStyle": "@bgTextStyle"
+  },
+  "tabBar": {
+    "color": "@tabColor",
+    "selectedColor": "@tabSelectedColor",
+    "backgroundColor": "@tabBg",
+    "borderStyle": "@tabBorder",
+    "list": [
+      { "pagePath": "pages/convert/index", "text": "换算" },
+      { "pagePath": "pages/almanac/index", "text": "万年历" },
+      { "pagePath": "pages/archive/index", "text": "档案" },
+      { "pagePath": "pages/me/index", "text": "我的" }
+    ]
+  },
+  "darkmode": true,
+  "themeLocation": "theme.json",
+  "style": "v2",
+  "lazyCodeLoading": "requiredComponents",
+  "sitemapLocation": "sitemap.json"
+}

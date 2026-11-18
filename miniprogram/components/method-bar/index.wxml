@@ -1,0 +1,3 @@
+<view class="chips">
+  <view wx:for="{{chips}}" wx:key="kind" id="{{ids[item.kind]}}" class="chip" data-kind="{{item.kind}}" bindtap="onChip">{{item.text}}</view>
+</view>

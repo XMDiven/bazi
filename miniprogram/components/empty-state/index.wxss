@@ -1,0 +1,7 @@
+.empty {
+  padding: var(--sp-5) var(--sp-4);
+  text-align: center;
+  color: var(--ink-2);
+}
+.empty-text { margin-bottom: var(--sp-4); }
+.empty-btn { display: inline-block; padding: 0 var(--sp-5); }

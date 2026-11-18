@@ -1,0 +1,11 @@
+.block-title { font-weight: 600; margin-bottom: var(--sp-2); }
+.policy view + view { margin-top: var(--sp-2); }
+.danger { color: var(--accent); }
+.clear-text { padding: var(--sp-2) 0 var(--sp-3); }
+.confirm-input {
+  height: var(--tap);
+  padding: 0 var(--sp-3);
+  border: 1rpx solid var(--line);
+  border-radius: var(--radius);
+  margin-bottom: var(--sp-3);
+}

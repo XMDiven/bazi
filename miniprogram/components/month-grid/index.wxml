@@ -1,0 +1,12 @@
+<view class="grid" bindtouchstart="onTouchStart" bindtouchend="onTouchEnd">
+  <view wx:for="{{weekHead}}" wx:key="*this" class="head aux">{{item}}</view>
+  <view
+    wx:for="{{viewCells}}" wx:key="key"
+    class="day-cell {{item.inMonth ? '' : 'out'}}"
+    data-date="{{item.key}}" bindtap="onCell"
+    aria-label="{{item.date.month}}月{{item.day}}日 {{item.sub}}"
+  >
+    <view class="num {{item.isToday ? 'today' : ''}} {{item.isSelected ? 'selected' : ''}}">{{item.day}}</view>
+    <view class="sub {{item.subKind === 'term' || item.subKind === 'festival' ? 'sub-strong' : ''}}">{{item.sub}}</view>
+  </view>
+</view>

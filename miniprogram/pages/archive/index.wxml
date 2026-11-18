@@ -1,0 +1,54 @@
+<view class="page">
+  <view class="seg tabs" role="tablist">
+    <view id="tab-profiles" class="seg-item {{tab === 'profiles' ? 'seg-on' : ''}}" data-key="profiles" bindtap="onTab">档案</view>
+    <view id="tab-recent" class="seg-item {{tab === 'recent' ? 'seg-on' : ''}}" data-key="recent" bindtap="onTab">最近</view>
+  </view>
+
+  <block wx:if="{{tab === 'profiles'}}">
+    <block wx:if="{{totalProfiles}}">
+      <input class="search" placeholder="按称呼搜索" value="{{query}}" bindinput="onSearch" confirm-type="search" />
+      <view wx:for="{{profiles}}" wx:key="id" class="swipe">
+        <view class="swipe-actions">
+          <view class="swipe-btn" data-id="{{item.id}}" bindtap="onPin">{{item.pinned ? '取消置顶' : '置顶'}}</view>
+          <view class="swipe-btn" data-id="{{item.id}}" bindtap="onEdit">编辑</view>
+          <view class="swipe-btn swipe-danger" data-id="{{item.id}}" data-name="{{item.name}}" bindtap="onDeleteProfile">删除</view>
+        </view>
+        <view
+          class="list-item profile-item swipe-body {{openId === item.id ? 'swiped-3' : ''}}"
+          data-id="{{item.id}}" bindtap="openProfile" bindtouchstart="onTouchStart" bindtouchend="onTouchEnd"
+        >
+          <view class="item-title">{{item.name}}<text wx:if="{{item.pinned}}" class="aux pin-mark"> · 置顶</text></view>
+          <view>{{item.summary}}</view>
+          <view class="aux">{{item.line3}}</view>
+        </view>
+      </view>
+      <empty-state wx:if="{{!profiles.length}}" text="没有找到「{{query}}」。" />
+    </block>
+    <empty-state wx:else text="还没有档案。换算后点「存入档案」，下次不用再输入。" actionText="去换算" bind:action="goConvert" />
+  </block>
+
+  <block wx:else>
+    <block wx:if="{{recent.length}}">
+      <view wx:for="{{recent}}" wx:key="id" class="swipe">
+        <view class="swipe-actions">
+          <view class="swipe-btn" data-id="{{item.id}}" bindtap="onSaveRecent">存为档案</view>
+          <view class="swipe-btn swipe-danger" data-id="{{item.id}}" bindtap="onDeleteRecent">删除</view>
+        </view>
+        <view
+          class="list-item recent-item swipe-body {{openId === item.id ? 'swiped-2' : ''}}"
+          data-id="{{item.id}}" bindtap="openRecent" bindtouchstart="onTouchStart" bindtouchend="onTouchEnd"
+        >
+          <view class="recent-row">
+            <view>
+              <view class="item-title">{{item.summary}}</view>
+              <view class="aux">{{item.line2}}</view>
+            </view>
+            <view class="aux">{{item.when}}</view>
+          </view>
+        </view>
+      </view>
+      <view class="clear-recent link" bindtap="onClearRecent">全部清空</view>
+    </block>
+    <empty-state wx:else text="还没有换算记录。" />
+  </block>
+</view>

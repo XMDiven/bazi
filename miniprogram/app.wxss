@@ -1,0 +1,140 @@
+/* 设计令牌（PRD 13.2 / 13.3）。之后所有样式只引用这些变量。 */
+page {
+  --paper: #F7F5F0;
+  --surface: #FFFFFF;
+  --ink: #1C1C1A;
+  --ink-2: #6B6862;
+  --line: #E4E0D8;
+  --accent: #A8432E;
+  --on-accent: #FFFFFF;
+  --notice: #F4EEDF;
+
+  --fs-display: 64rpx;
+  --fs-title: 36rpx;
+  --fs-body: 30rpx;
+  --fs-aux: 26rpx;
+  --fs-min: 24rpx;
+
+  --sp-1: 8rpx;
+  --sp-2: 16rpx;
+  --sp-3: 24rpx;
+  --sp-4: 32rpx;
+  --sp-5: 48rpx;
+  --radius: 16rpx;
+  --tap: 88rpx;
+
+  background: var(--paper);
+  color: var(--ink);
+  font-size: var(--fs-body);
+  line-height: 1.6;
+  font-variant-numeric: tabular-nums;
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", "Microsoft YaHei", sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  page {
+    --paper: #141413;
+    --surface: #1E1E1C;
+    --ink: #ECEAE4;
+    --ink-2: #A29F97;
+    --line: #2E2D2A;
+    --accent: #D9735C;
+    --on-accent: #141413;
+    --notice: #2A261C;
+  }
+}
+
+.page {
+  max-width: 750rpx;
+  margin: 0 auto;
+  padding: var(--sp-4);
+  box-sizing: border-box;
+}
+
+.card {
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: var(--sp-4);
+  margin-bottom: var(--sp-3);
+}
+
+.title { font-size: var(--fs-title); font-weight: 600; }
+.aux { font-size: var(--fs-aux); color: var(--ink-2); }
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: var(--tap);
+  border-bottom: 1rpx solid var(--line);
+}
+.row:last-child { border-bottom: none; }
+.field-error { font-size: var(--fs-aux); color: var(--accent); padding-bottom: var(--sp-2); }
+
+.btn-primary {
+  background: var(--accent);
+  color: var(--on-accent);
+  font-size: var(--fs-body);
+  border-radius: var(--radius);
+  min-height: var(--tap);
+  line-height: var(--tap);
+  border: none;
+}
+.btn-plain {
+  background: var(--surface);
+  color: var(--ink);
+  font-size: var(--fs-body);
+  border-radius: var(--radius);
+  min-height: var(--tap);
+  line-height: var(--tap);
+  border: 1rpx solid var(--line);
+}
+button::after { border: none; }
+.disclaimer { font-size: var(--fs-aux); color: var(--ink-2); padding: var(--sp-4) 0; }
+.seg {
+  display: flex;
+  background: var(--paper);
+  border: 1rpx solid var(--line);
+  border-radius: var(--radius);
+  padding: 4rpx;
+}
+.seg-item {
+  flex: 1;
+  min-height: 72rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.3;
+  padding: 8rpx 0;
+  box-sizing: border-box;
+  text-align: center;
+  font-size: var(--fs-body);
+  color: var(--ink-2);
+  border-radius: 12rpx;
+}
+.seg-on {
+  background: var(--surface);
+  color: var(--ink);
+  font-weight: 600;
+}
+.seg-sub { font-size: var(--fs-aux); color: var(--ink-2); font-weight: normal; }
+
+/* 设置项：大白话标题 +「?」+ 术语副标题（PRD 5.5） */
+.label-row { display: flex; align-items: center; gap: var(--sp-2); }
+.help { min-width: 56rpx; min-height: 56rpx; line-height: 56rpx; text-align: center; border: 1rpx solid var(--line); border-radius: 50%; font-size: var(--fs-aux); }
+.setting-head { flex: 1; padding: var(--sp-2) 0; }
+.setting-title { color: var(--ink-2); }
+.setting-hint { margin-top: 4rpx; }
+
+.field-label { color: var(--ink-2); }
+.field-value { text-align: right; }
+.placeholder { color: var(--ink-2); }
+.section-title { font-size: var(--fs-title); font-weight: 600; margin: var(--sp-4) 0 var(--sp-2); }
+.link { color: var(--accent); }
+.list-item { background: var(--surface); border-radius: var(--radius); padding: var(--sp-3) var(--sp-4); margin-bottom: var(--sp-2); }
+
+/* 开关选中色跟随令牌（switch 的 color 属性不支持 CSS 变量） */
+.wx-switch-input.wx-switch-input-checked {
+  background-color: var(--accent) !important;
+  border-color: var(--accent) !important;
+}

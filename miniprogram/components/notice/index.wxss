@@ -1,0 +1,9 @@
+.notice {
+  background: var(--notice);
+  color: var(--ink);
+  border-radius: var(--radius);
+  padding: var(--sp-3) var(--sp-4);
+  margin-bottom: var(--sp-3);
+  font-size: var(--fs-aux);
+}
+.notice-line + .notice-line { margin-top: var(--sp-1); }

@@ -1,0 +1,4 @@
+{
+  "navigationBarTitleText": "万年历",
+  "usingComponents": { "month-grid": "/components/month-grid/index" }
+}

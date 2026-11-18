@@ -1,0 +1,8 @@
+.confirm { color: var(--accent); min-width: var(--tap); text-align: right; line-height: var(--tap); }
+.wheel { height: 400rpx; margin: var(--sp-3) 0; }
+.wheel-item { line-height: 80rpx; text-align: center; font-size: var(--fs-body); color: var(--ink); }
+.wheel-indicator { height: 80rpx; }
+.section-label { margin: var(--sp-3) 0 var(--sp-2); }
+.shichen-list { margin-top: var(--sp-3); }
+.shichen-item { padding: 0 var(--sp-2); }
+.shichen-on { color: var(--accent); font-weight: 600; }

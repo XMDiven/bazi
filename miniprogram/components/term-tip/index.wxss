@@ -1,0 +1,1 @@
+.tip-def { padding: var(--sp-2) 0 var(--sp-3); }

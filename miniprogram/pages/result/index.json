@@ -1,0 +1,15 @@
+{
+  "navigationBarTitleText": "换算结果",
+  "usingComponents": {
+    "summary-header": "/components/summary-header/index",
+    "method-bar": "/components/method-bar/index",
+    "notice": "/components/notice/index",
+    "pillar-table": "/components/pillar-table/index",
+    "term-tip": "/components/term-tip/index",
+    "sheet": "/components/sheet/index",
+    "city-sheet": "/components/city-sheet/index",
+    "empty-state": "/components/empty-state/index",
+    "action-bar": "/components/action-bar/index",
+    "privacy-sheet": "/components/privacy-sheet/index"
+  }
+}

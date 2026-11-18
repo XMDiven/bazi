@@ -1,0 +1,17 @@
+.me-header { padding: var(--sp-3) 0; }
+.column { flex-direction: column; align-items: stretch; padding: var(--sp-2) 0; }
+.inline-seg { margin-top: var(--sp-2); }
+.settings-note { padding-top: var(--sp-2); }
+/* 需要压过基础库 v2 的 button:not([size=mini]) { width:184px; margin:0 auto } 与 font-weight:700 */
+.card .plain-row {
+  width: 100%;
+  font-weight: normal;
+  background: transparent;
+  color: var(--ink);
+  font-size: var(--fs-body);
+  padding: 0;
+  margin: 0;
+  text-align: left;
+  border-radius: 0;
+  line-height: 1.6;
+}
