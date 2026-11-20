@@ -20,9 +20,12 @@ Component({
     },
     onTouchStart(e) {
       this.touchX = e.touches[0].clientX;
+      this.touchY = e.touches[0].clientY;
     },
     onTouchEnd(e) {
       const dx = e.changedTouches[0].clientX - this.touchX;
+      const dy = e.changedTouches[0].clientY - this.touchY;
+      if (Math.abs(dx) <= Math.abs(dy)) return; // 以纵向为主是在滚动页面，不翻月
       if (dx < -SWIPE_PX) this.triggerEvent('next');
       else if (dx > SWIPE_PX) this.triggerEvent('prev');
     },
