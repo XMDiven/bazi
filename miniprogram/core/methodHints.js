@@ -11,6 +11,8 @@ const METHOD_COPY = {
   ziSect: { title: '晚上 11 点后出生，日柱算哪天？', hint: '子时派别 · 两种说法都常见，不确定就用默认' },
   trueSolar: { title: '按出生地校正时间', hint: '真太阳时 · 各地天亮早晚不同，新疆与北京相差约 2 小时' },
 };
+// 时间精度为「不详」时开关置灰，需要告诉用户原因
+const TRUE_SOLAR_DISABLED_HINT = '出生时间不详，无法按出生地校正';
 
 const ZI_SECT_ITEMS = [
   { key: 'late23', text: '算第二天', sub: '23:00 换日' },
@@ -57,4 +59,4 @@ function trueSolarPreview(input) {
   return { shift, change: pillarChanges(off, on) };
 }
 
-module.exports = { METHOD_COPY, ZI_SECT_ITEMS, ziSectMatters, trueSolarPreview };
+module.exports = { METHOD_COPY, TRUE_SOLAR_DISABLED_HINT, ZI_SECT_ITEMS, ziSectMatters, trueSolarPreview };

@@ -130,6 +130,9 @@ button::after { border: none; }
 
 .field-label { color: var(--ink-2); }
 .field-value { text-align: right; }
+/* 可打开弹层的字段：值与「›」靠右成组 */
+.field-end { display: flex; align-items: center; gap: var(--sp-2); }
+.chevron { color: var(--ink-2); }
 .placeholder { color: var(--ink-2); }
 .section-title { font-size: var(--fs-title); font-weight: 600; margin: var(--sp-4) 0 var(--sp-2); }
 .link { color: var(--accent); }

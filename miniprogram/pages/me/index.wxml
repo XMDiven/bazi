@@ -26,7 +26,10 @@
         <text class="field-label">默认出生地</text>
         <view class="help link" data-id="K5" catchtap="openArticle" aria-label="出生地说明" hover-class="tap-active">?</view>
       </view>
-      <text>{{cityText}}</text>
+      <view class="field-end">
+        <text>{{cityText}}</text>
+        <text class="chevron">›</text>
+      </view>
     </view>
     <view class="aux settings-note">只影响之后的新换算</view>
   </view>

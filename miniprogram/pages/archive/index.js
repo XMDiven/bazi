@@ -63,7 +63,14 @@ Page({
     wx.navigateTo({ url: `/pages/result/index?q=${encodeInput(profile.input)}&source=archive&profileId=${id}` });
   },
   onPin(e) {
-    storage.saveProfiles(R.togglePin(storage.loadProfiles(), e.currentTarget.dataset.id));
+    const { id } = e.currentTarget.dataset;
+    const list = R.togglePin(storage.loadProfiles(), id);
+    if (!storage.saveProfiles(list)) {
+      wx.showToast({ title: '保存失败，可在「我的 › 数据与隐私」清理', icon: 'none' });
+      return;
+    }
+    const pinned = (list.find(p => p.id === id) || {}).pinned;
+    wx.showToast({ title: pinned ? '已置顶' : '已取消置顶', icon: 'none' });
     this.refresh();
   },
   onEdit(e) {

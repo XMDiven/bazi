@@ -11,9 +11,12 @@
     <view class="card">
       <view id="date-field" class="row" bindtap="openDate" hover-class="tap-active">
         <text class="field-label">日期与时间</text>
-        <view class="field-value">
-          <view>{{dateText}}</view>
-          <view class="aux">{{timeText}}</view>
+        <view class="field-end">
+          <view class="field-value">
+            <view>{{dateText}}</view>
+            <view class="aux">{{timeText}}</view>
+          </view>
+          <text class="chevron">›</text>
         </view>
       </view>
       <view wx:if="{{errors.date}}" class="field-error">{{errors.date}}</view>
@@ -26,6 +29,7 @@
             <view class="help link" data-term="真太阳时" bindtap="openTip" aria-label="真太阳时说明" hover-class="tap-active">?</view>
           </view>
           <view class="aux setting-hint">{{copy.trueSolar.hint}}</view>
+          <view wx:if="{{input.precision === 'unknown'}}" class="aux setting-hint">{{trueSolarDisabledHint}}</view>
         </view>
         <switch id="true-solar" checked="{{input.useTrueSolarTime}}" disabled="{{input.precision === 'unknown'}}" bindchange="onTrueSolar" />
       </view>
@@ -36,7 +40,10 @@
 
       <view id="city-field" class="row" bindtap="openCity" hover-class="tap-active">
         <text class="field-label">出生地</text>
-        <text class="field-value {{cityText ? '' : 'placeholder'}}">{{cityText || (input.useTrueSolarTime ? '请选择' : '选填')}}</text>
+        <view class="field-end">
+          <text class="field-value {{cityText ? '' : 'placeholder'}}">{{cityText || (input.useTrueSolarTime ? '请选择' : '选填')}}</text>
+          <text class="chevron">›</text>
+        </view>
       </view>
       <view wx:if="{{errors.city}}" class="field-error">{{errors.city}}</view>
 
@@ -59,7 +66,10 @@
       <block wx:for="{{rvFields}}" wx:key="key">
         <view id="{{item.id}}" class="row" data-field="{{item.key}}" bindtap="openRv" hover-class="tap-active">
           <text class="field-label">{{item.label}}</text>
-          <text class="field-value {{rv[item.key] ? '' : 'placeholder'}}">{{rv[item.key] || (item.key === 'time' ? '不填' : '请选择')}}</text>
+          <view class="field-end">
+            <text class="field-value {{rv[item.key] ? '' : 'placeholder'}}">{{rv[item.key] || (item.key === 'time' ? '不填' : '请选择')}}</text>
+            <text class="chevron">›</text>
+          </view>
         </view>
         <view wx:if="{{rvErrors[item.key]}}" class="field-error">{{rvErrors[item.key]}}</view>
       </block>

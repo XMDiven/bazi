@@ -2,7 +2,7 @@
   <view class="head-row">
     <view class="nav-btn" bindtap="onPrev" aria-label="上个月" hover-class="tap-active">‹</view>
     <picker mode="date" fields="month" value="{{pickerValue}}" start="{{pickerStart}}" end="{{pickerEnd}}" bindchange="onPick">
-      <view id="month-title" class="title">{{title}} · {{yearGanZhiText}}</view>
+      <view id="month-title" class="title" hover-class="tap-active">{{title}} · {{yearGanZhiText}}<text class="chevron"> ›</text></view>
     </picker>
     <view class="nav-btn" bindtap="onNext" aria-label="下个月" hover-class="tap-active">›</view>
     <view id="today" class="today-btn link" bindtap="onToday" hover-class="tap-active">今天</view>

@@ -10,7 +10,7 @@ const { JIA_ZI, monthOptionsForYear, timeOptionsForDay } = require('../../core/p
 const storage = require('../../services/storage');
 const { track } = require('../../services/track');
 const { APP_SHARE_TITLE } = require('../../core/shareText');
-const { METHOD_COPY, ZI_SECT_ITEMS, ziSectMatters, trueSolarPreview } = require('../../core/methodHints');
+const { METHOD_COPY, TRUE_SOLAR_DISABLED_HINT, ZI_SECT_ITEMS, ziSectMatters, trueSolarPreview } = require('../../core/methodHints');
 const { TERMS } = require('../../core/articles');
 
 const FIELD_ORDER = ['date', 'time', 'city'];
@@ -54,6 +54,7 @@ Page({
     mode: 'birth',
     ziSectItems: ZI_SECT_ITEMS,
     copy: METHOD_COPY,
+    trueSolarDisabledHint: TRUE_SOLAR_DISABLED_HINT,
     input: null,
     ziSectVisible: false,
     solarPreview: null,

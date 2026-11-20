@@ -6,7 +6,7 @@ const { dateText, timeText } = require('../../core/pickerModel');
 const R = require('../../core/records');
 const storage = require('../../services/storage');
 const { track } = require('../../services/track');
-const { METHOD_COPY, ZI_SECT_ITEMS } = require('../../core/methodHints');
+const { METHOD_COPY, TRUE_SOLAR_DISABLED_HINT, ZI_SECT_ITEMS } = require('../../core/methodHints');
 
 const NAME_ERRORS = {
   NAME_REQUIRED: '请填写称呼',
@@ -36,6 +36,7 @@ Page({
     errors: {},
     ziSectItems: ZI_SECT_ITEMS,
     copy: METHOD_COPY,
+    trueSolarDisabledHint: TRUE_SOLAR_DISABLED_HINT,
     showDateSheet: false,
     showCitySheet: false,
   },
@@ -152,6 +153,7 @@ Page({
       return;
     }
     track('profile_save');
+    wx.showToast({ title: this.profile ? '已保存' : '已存入档案', icon: 'none' });
     wx.navigateBack();
   },
 });
