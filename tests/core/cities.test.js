@@ -1,7 +1,7 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
 const DATA = require('../../miniprogram/core/data/cities');
-const { getCityById, searchCities, groupByProvince, hotCities, recentCities } = require('../../miniprogram/core/cities');
+const { getCityById, searchCities, groupByProvince, provinceShort, hotCities, recentCities } = require('../../miniprogram/core/cities');
 
 test('covers prefecture-level cities with unique ids', () => {
   assert.ok(DATA.length >= 300);
@@ -38,6 +38,18 @@ test('recentCities: default first, then by time, deduped, stale ids skipped, cap
   }).map(c => c.id);
   assert.deepEqual(ids, ['北京市-北京', '云南省-大理白族自治州', '江苏省-苏州']);
   const many = Array.from({ length: 10 }, (_, i) => rec(hotCities()[i % 8].id, i));
-  assert.equal(recentCities({ recent: many }).length, 6);
+  assert.equal(recentCities({ recent: many }).length, 4);
   assert.deepEqual(recentCities(), []);
+});
+test('groupByProvince keeps source order and short names', () => {
+  const g = groupByProvince();
+  assert.deepEqual(g.slice(0, 4).map(x => x.short), ['北京', '天津', '上海', '重庆']);
+  assert.ok(g.every(x => x.short && x.short.length <= 3), g.map(x => x.short).join());
+});
+test('provinceShort', () => {
+  assert.equal(provinceShort('新疆维吾尔自治区'), '新疆');
+  assert.equal(provinceShort('广西壮族自治区'), '广西');
+  assert.equal(provinceShort('内蒙古自治区'), '内蒙古');
+  assert.equal(provinceShort('香港特别行政区'), '香港');
+  assert.equal(provinceShort('黑龙江省'), '黑龙江');
 });

@@ -1,4 +1,7 @@
+/* 弹层本身不滚动（scroll=false），这里固定高度并分区：搜索、快捷选择固定，省市两栏各自滚动 */
+.picker { height: 70vh; display: flex; flex-direction: column; }
 .search {
+  flex: none;
   height: var(--tap);
   padding: 0 var(--sp-3);
   border: 1rpx solid var(--line);
@@ -6,11 +9,12 @@
   background: var(--paper);
   margin-bottom: var(--sp-2);
 }
-.city-sub { padding-left: var(--sp-4); }
+.pane { flex: 1; min-height: 0; height: 100%; }
 .city-on { color: var(--accent); font-weight: 600; }
-.empty-search, .overseas { padding: var(--sp-3) 0; text-align: center; }
-.quick-label { margin: var(--sp-2) 0 var(--sp-1); }
-.quick { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--sp-2); margin-bottom: var(--sp-2); }
+.empty-search { padding: var(--sp-3) 0; text-align: center; }
+
+.quick-label { flex: none; margin: var(--sp-1) 0; }
+.quick { flex: none; display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--sp-2); margin-bottom: var(--sp-2); }
 .quick-chip {
   min-height: 64rpx;
   line-height: 64rpx;
@@ -24,3 +28,24 @@
   padding: 0 var(--sp-1);
 }
 .quick-on { border-color: var(--accent); color: var(--accent); font-weight: 600; }
+
+.cols { flex: 1; min-height: 0; display: flex; border-top: 1rpx solid var(--line); }
+.col-left { width: 180rpx; height: 100%; background: var(--paper); }
+.col-right { flex: 1; height: 100%; padding-left: var(--sp-3); box-sizing: border-box; }
+.prov {
+  min-height: var(--tap);
+  line-height: var(--tap);
+  text-align: center;
+  color: var(--ink-2);
+  font-size: var(--fs-aux);
+}
+.prov-on { background: var(--surface); color: var(--ink); font-weight: 600; }
+
+.foot {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1rpx solid var(--line);
+}
+.foot-none { min-height: var(--tap); line-height: var(--tap); }

@@ -1,7 +1,7 @@
 const CITIES = require('./data/cities');
 
 const SEARCH_LIMIT = 30;
-const RECENT_LIMIT = 6;
+const RECENT_LIMIT = 4; // 正好一行，给省市两栏留出高度
 // 热门城市：人口最多的 8 个，用于城市弹层顶部的快捷选择
 const HOT_CITY_IDS = ['北京市-北京', '上海市-上海', '广东省-广州', '广东省-深圳', '四川省-成都', '重庆市-重庆', '湖北省-武汉', '陕西省-西安'];
 
@@ -15,16 +15,18 @@ function searchCities(query) {
   return CITIES.filter(c => c.name.includes(q) || c.province.includes(q)).slice(0, SEARCH_LIMIT);
 }
 
-/** 按省份 Unicode 顺序分组；省内保持数据源顺序 */
+// 两栏左侧用省份简称，窄屏也放得下
+const PROVINCE_SUFFIX = /(省|市|壮族自治区|回族自治区|维吾尔自治区|自治区|特别行政区)$/;
+const provinceShort = province => province.replace(PROVINCE_SUFFIX, '');
+
+/** 按省份分组，省份与省内城市都保持数据源顺序（行政区划代码顺序，北京、天津、上海……） */
 function groupByProvince() {
   const map = new Map();
   for (const c of CITIES) {
     if (!map.has(c.province)) map.set(c.province, []);
     map.get(c.province).push(c);
   }
-  return [...map.keys()]
-    .sort((a, b) => (a < b ? -1 : a > b ? 1 : 0))
-    .map(province => ({ province, cities: map.get(province) }));
+  return [...map.keys()].map(province => ({ province, short: provinceShort(province), cities: map.get(province) }));
 }
 
 function hotCities() {
@@ -49,4 +51,4 @@ function recentCities({ defaultCityId = null, recent = [], profiles = [] } = {},
   return out;
 }
 
-module.exports = { getCityById, searchCities, groupByProvince, hotCities, recentCities };
+module.exports = { getCityById, searchCities, groupByProvince, provinceShort, hotCities, recentCities };

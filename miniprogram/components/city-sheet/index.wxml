@@ -1,33 +1,47 @@
-<sheet show="{{show}}" title="出生地" bind:close="onClose">
-  <input id="city-search" class="search" placeholder="搜索城市或省份" value="{{query}}" bindinput="onInput" confirm-type="search" />
-  <block wx:if="{{query}}">
-    <view wx:for="{{results}}" wx:key="id" class="row city-item {{item.id === value ? 'city-on' : ''}}" data-id="{{item.id}}" bindtap="onCity" hover-class="tap-active">
-      <text>{{item.name}}</text><text class="aux">{{item.province}}</text>
-    </view>
-    <view wx:if="{{!results.length}}" class="aux empty-search">没有找到「{{query}}」。</view>
-  </block>
-  <block wx:else>
-    <block wx:if="{{recentList.length}}">
-      <view class="aux quick-label">最近使用</view>
-      <view class="quick">
-        <view wx:for="{{recentList}}" wx:key="id" class="quick-chip {{item.id === value ? 'quick-on' : ''}}" data-id="{{item.id}}" bindtap="onCity" hover-class="tap-active">{{item.name}}</view>
+<sheet show="{{show}}" title="出生地" scroll="{{false}}" bind:close="onClose">
+  <view class="picker">
+    <input id="city-search" class="search" placeholder="搜索城市或省份" value="{{query}}" bindinput="onInput" confirm-type="search" />
+
+    <scroll-view wx:if="{{query}}" scroll-y class="pane">
+      <view wx:for="{{results}}" wx:key="id" class="row city-item {{item.id === value ? 'city-on' : ''}}" data-id="{{item.id}}" bindtap="onCity" hover-class="tap-active">
+        <text>{{item.name}}</text><text class="aux">{{item.province}}</text>
       </view>
-    </block>
-    <view class="aux quick-label">热门城市</view>
-    <view class="quick">
-      <view wx:for="{{hotList}}" wx:key="id" class="quick-chip {{item.id === value ? 'quick-on' : ''}}" data-id="{{item.id}}" bindtap="onCity" hover-class="tap-active">{{item.name}}</view>
-    </view>
-    <view class="row city-item" bindtap="onNone" hover-class="tap-active"><text>不选择出生地</text></view>
-    <block wx:for="{{groups}}" wx:key="province" wx:for-item="group">
-      <view class="row province" data-province="{{group.province}}" bindtap="onProvince" hover-class="tap-active">
-        <text>{{group.province}}</text><text class="aux">{{openProvince === group.province ? '收起' : '展开'}}</text>
-      </view>
-      <block wx:if="{{openProvince === group.province}}">
-        <view wx:for="{{group.cities}}" wx:key="id" class="row city-item city-sub {{item.id === value ? 'city-on' : ''}}" data-id="{{item.id}}" bindtap="onCity" hover-class="tap-active">
-          <text>{{item.name}}</text>
+      <view wx:if="{{!results.length}}" class="aux empty-search">没有找到「{{query}}」。</view>
+    </scroll-view>
+
+    <block wx:else>
+      <block wx:if="{{recentList.length}}">
+        <view class="aux quick-label">最近使用</view>
+        <view class="quick">
+          <view wx:for="{{recentList}}" wx:key="id" class="quick-chip {{item.id === value ? 'quick-on' : ''}}" data-id="{{item.id}}" bindtap="onCity" hover-class="tap-active">{{item.name}}</view>
         </view>
       </block>
+      <view class="aux quick-label">热门城市</view>
+      <view class="quick">
+        <view wx:for="{{hotList}}" wx:key="id" class="quick-chip {{item.id === value ? 'quick-on' : ''}}" data-id="{{item.id}}" bindtap="onCity" hover-class="tap-active">{{item.name}}</view>
+      </view>
+
+      <view class="cols">
+        <scroll-view scroll-y enhanced show-scrollbar="{{false}}" class="col-left" scroll-into-view="{{'prov-' + activeIndex}}">
+          <view
+            wx:for="{{groups}}" wx:key="province" id="prov-{{index}}"
+            class="prov {{index === activeIndex ? 'prov-on' : ''}}"
+            data-index="{{index}}" bindtap="onProvince" hover-class="tap-active"
+          >{{item.short}}</view>
+        </scroll-view>
+        <scroll-view scroll-y enhanced show-scrollbar="{{false}}" class="col-right" scroll-into-view="{{cityAnchor}}">
+          <view
+            wx:for="{{groups[activeIndex].cities}}" wx:key="id" id="c-{{activeIndex}}-{{index}}"
+            class="row city-item {{item.id === value ? 'city-on' : ''}}"
+            data-id="{{item.id}}" bindtap="onCity" hover-class="tap-active"
+          ><text>{{item.name}}</text><text wx:if="{{item.id === value}}">✓</text></view>
+        </scroll-view>
+      </view>
     </block>
-  </block>
-  <view class="aux overseas">暂不支持境外出生地</view>
+
+    <view class="foot">
+      <view id="city-none" class="foot-none" bindtap="onNone" hover-class="tap-active">不选择出生地</view>
+      <view class="aux">暂不支持境外出生地</view>
+    </view>
+  </view>
 </sheet>

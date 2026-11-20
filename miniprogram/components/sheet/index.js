@@ -6,6 +6,8 @@ Component({
   properties: {
     show: { type: Boolean, value: false },
     title: { type: String, value: '' },
+    // false：弹层本身不滚动，由内容自己分区滚动（如城市弹层的省市两栏），避免滚动嵌套
+    scroll: { type: Boolean, value: true },
   },
   // show 由页面控制；visible 决定节点是否还在，关闭时先播退场动画再移除
   data: { visible: false, leaving: false },
