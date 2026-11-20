@@ -18,7 +18,8 @@
   margin: 0 auto;
   background: var(--surface);
   border-radius: var(--radius) var(--radius) 0 0;
-  padding: var(--sp-3) var(--sp-4) calc(var(--sp-4) + env(safe-area-inset-bottom));
+  /* 左右留白放进 sheet-head / sheet-content，让滚动条落在边缘的留白里，不压住右侧文字 */
+  padding: var(--sp-3) 0 calc(var(--sp-4) + env(safe-area-inset-bottom));
   animation: sheet-in 200ms ease-out;
 }
 @keyframes sheet-in {
@@ -45,6 +46,8 @@
   align-items: center;
   justify-content: space-between;
   min-height: var(--tap);
+  padding: 0 var(--sp-4);
 }
 .sheet-title { font-size: var(--fs-title); font-weight: 600; }
 .sheet-body { max-height: 70vh; }
+.sheet-content { padding: 0 var(--sp-4); }
