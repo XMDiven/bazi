@@ -7,6 +7,16 @@
     <view wx:if="{{!results.length}}" class="aux empty-search">没有找到「{{query}}」。</view>
   </block>
   <block wx:else>
+    <block wx:if="{{recentList.length}}">
+      <view class="aux quick-label">最近使用</view>
+      <view class="quick">
+        <view wx:for="{{recentList}}" wx:key="id" class="quick-chip {{item.id === value ? 'quick-on' : ''}}" data-id="{{item.id}}" bindtap="onCity" hover-class="tap-active">{{item.name}}</view>
+      </view>
+    </block>
+    <view class="aux quick-label">热门城市</view>
+    <view class="quick">
+      <view wx:for="{{hotList}}" wx:key="id" class="quick-chip {{item.id === value ? 'quick-on' : ''}}" data-id="{{item.id}}" bindtap="onCity" hover-class="tap-active">{{item.name}}</view>
+    </view>
     <view class="row city-item" bindtap="onNone" hover-class="tap-active"><text>不选择出生地</text></view>
     <block wx:for="{{groups}}" wx:key="province" wx:for-item="group">
       <view class="row province" data-province="{{group.province}}" bindtap="onProvince" hover-class="tap-active">

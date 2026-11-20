@@ -1,7 +1,7 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
 const DATA = require('../../miniprogram/core/data/cities');
-const { getCityById, searchCities, groupByProvince } = require('../../miniprogram/core/cities');
+const { getCityById, searchCities, groupByProvince, hotCities, recentCities } = require('../../miniprogram/core/cities');
 
 test('covers prefecture-level cities with unique ids', () => {
   assert.ok(DATA.length >= 300);
@@ -23,4 +23,21 @@ test('groupByProvince is stable and complete', () => {
   const g = groupByProvince();
   assert.equal(g.reduce((n, x) => n + x.cities.length, 0), DATA.length);
   assert.deepEqual(groupByProvince().map(x => x.province), g.map(x => x.province));
+});
+
+test('hotCities all resolve', () => {
+  assert.equal(hotCities().length, 8);
+});
+test('recentCities: default first, then by time, deduped, stale ids skipped, capped', () => {
+  const rec = (cityId, at) => ({ input: { cityId }, createdAt: at });
+  const prof = (cityId, at) => ({ input: { cityId }, lastOpenedAt: at });
+  const ids = recentCities({
+    defaultCityId: '北京市-北京',
+    recent: [rec('江苏省-苏州', 30), rec('beijing', 50), rec(null, 60), rec('北京市-北京', 70)],
+    profiles: [prof('云南省-大理白族自治州', 40), prof('江苏省-苏州', 10)],
+  }).map(c => c.id);
+  assert.deepEqual(ids, ['北京市-北京', '云南省-大理白族自治州', '江苏省-苏州']);
+  const many = Array.from({ length: 10 }, (_, i) => rec(hotCities()[i % 8].id, i));
+  assert.equal(recentCities({ recent: many }).length, 6);
+  assert.deepEqual(recentCities(), []);
 });

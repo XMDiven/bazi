@@ -9,3 +9,18 @@
 .city-sub { padding-left: var(--sp-4); }
 .city-on { color: var(--accent); font-weight: 600; }
 .empty-search, .overseas { padding: var(--sp-3) 0; text-align: center; }
+.quick-label { margin: var(--sp-2) 0 var(--sp-1); }
+.quick { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--sp-2); margin-bottom: var(--sp-2); }
+.quick-chip {
+  min-height: 64rpx;
+  line-height: 64rpx;
+  text-align: center;
+  border: 1rpx solid var(--line);
+  border-radius: 999rpx;
+  font-size: var(--fs-aux);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0 var(--sp-1);
+}
+.quick-on { border-color: var(--accent); color: var(--accent); font-weight: 600; }

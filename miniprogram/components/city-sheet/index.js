@@ -1,4 +1,5 @@
-const { searchCities, groupByProvince } = require('../../core/cities');
+const { searchCities, groupByProvince, hotCities, recentCities } = require('../../core/cities');
+const storage = require('../../services/storage');
 
 Component({
   options: { styleIsolation: 'apply-shared' },
@@ -11,6 +12,21 @@ Component({
     results: [],
     groups: groupByProvince(),
     openProvince: '',
+    recentList: [],
+    hotList: hotCities(),
+  },
+  observers: {
+    show(show) {
+      if (!show) return;
+      // 每次打开时重算：刚换算或刚存的档案，下次打开就能看到
+      this.setData({
+        recentList: recentCities({
+          defaultCityId: storage.loadSettings().cityId,
+          recent: storage.loadRecent(),
+          profiles: storage.loadProfiles(),
+        }),
+      });
+    },
   },
   methods: {
     onInput(e) {
