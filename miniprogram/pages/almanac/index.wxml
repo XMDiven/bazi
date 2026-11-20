@@ -5,7 +5,7 @@
       <view id="month-title" class="title" hover-class="tap-active">{{title}} · {{yearGanZhiText}}<text class="chevron"> ›</text></view>
     </picker>
     <view class="nav-btn" bindtap="onNext" aria-label="下个月" hover-class="tap-active">›</view>
-    <view id="today" class="today-btn link" bindtap="onToday" hover-class="tap-active">今天</view>
+    <view id="today" class="today-btn" bindtap="onToday" hover-class="tap-active">今天</view>
   </view>
 
   <month-grid id="month-grid" cells="{{cells}}" bind:select="onSelect" bind:prev="onPrev" bind:next="onNext" />
@@ -18,7 +18,7 @@
     <view wx:if="{{detail.festivals.length}}" class="aux">{{festivalText}}</view>
     <view class="row summary-foot">
       <text class="aux">{{nextTermText}}</text>
-      <view id="open-terms" class="link" bindtap="openTerms" hover-class="tap-active">节气表</view>
+      <view id="open-terms" bindtap="openTerms" hover-class="tap-active">节气表<text class="chevron"> ›</text></view>
     </view>
     <button id="open-day" class="btn-plain" bindtap="openDay">查看日详情</button>
   </view>

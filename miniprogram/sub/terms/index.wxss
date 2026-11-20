@@ -1,5 +1,6 @@
 .year-picker { margin-bottom: var(--sp-3); }
-.past { opacity: 0.45; }
+/* 用颜色降级而不是透明度：透明度叠在辅助文字上，对比度会低于 5:1 */
+.past { color: var(--ink-2); }
 .term-name { display: flex; align-items: center; gap: var(--sp-2); }
 .tag {
   font-size: var(--fs-min);

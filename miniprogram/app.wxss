@@ -123,7 +123,7 @@ button::after { border: none; }
 
 /* 设置项：大白话标题 +「?」+ 术语副标题（PRD 5.5） */
 .label-row { display: flex; align-items: center; gap: var(--sp-2); }
-.help { min-width: 56rpx; min-height: 56rpx; line-height: 56rpx; text-align: center; border: 1rpx solid var(--line); border-radius: 50%; font-size: var(--fs-aux); }
+.help { min-width: 56rpx; min-height: 56rpx; line-height: 56rpx; text-align: center; border: 1rpx solid var(--line); border-radius: 50%; font-size: var(--fs-aux); color: var(--ink-2); }
 .setting-head { flex: 1; padding: var(--sp-2) 0; }
 .setting-title { color: var(--ink-2); }
 .setting-hint { margin-top: 4rpx; }

@@ -14,7 +14,6 @@
   align-items: center;
   justify-content: center;
 }
-.out { opacity: 0.35; }
 .num {
   width: 60rpx;
   height: 60rpx;
@@ -34,3 +33,6 @@
   max-width: 100%;
 }
 .sub-strong { color: var(--ink); }
+/* 非本月日期用颜色降级而不是透明度，保证辅助文字对比度 */
+.out .num, .out .sub { color: var(--ink-2); }
+.out .today { color: var(--on-accent); }

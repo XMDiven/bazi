@@ -6,7 +6,7 @@
     <view class="row column">
       <view class="label-row">
         <text class="setting-title">{{copy.ziSect.title}}</text>
-        <view class="help link" data-id="K6" bindtap="openArticle" aria-label="子时派别说明" hover-class="tap-active">?</view>
+        <view class="help" data-id="K6" bindtap="openArticle" aria-label="子时派别说明" hover-class="tap-active">?</view>
       </view>
       <view class="aux setting-hint">{{copy.ziSect.hint}}</view>
       <segmented id="settings-zi-sect" class="inline-seg" items="{{ziSectItems}}" value="{{settings.ziSect}}" bind:change="onZiSect" />
@@ -15,7 +15,7 @@
       <view class="setting-head">
         <view class="label-row">
           <text class="setting-title">{{copy.trueSolar.title}}</text>
-          <view class="help link" data-id="K5" bindtap="openArticle" aria-label="真太阳时说明" hover-class="tap-active">?</view>
+          <view class="help" data-id="K5" bindtap="openArticle" aria-label="真太阳时说明" hover-class="tap-active">?</view>
         </view>
         <view class="aux setting-hint">{{copy.trueSolar.hint}}</view>
       </view>
@@ -24,7 +24,7 @@
     <view class="row" bindtap="openCity" hover-class="tap-active">
       <view class="label-row">
         <text class="field-label">默认出生地</text>
-        <view class="help link" data-id="K5" catchtap="openArticle" aria-label="出生地说明" hover-class="tap-active">?</view>
+        <view class="help" data-id="K5" catchtap="openArticle" aria-label="出生地说明" hover-class="tap-active">?</view>
       </view>
       <view class="field-end">
         <text>{{cityText}}</text>

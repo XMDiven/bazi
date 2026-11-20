@@ -26,7 +26,7 @@
         <view class="setting-head">
           <view class="label-row">
             <text class="setting-title">{{copy.trueSolar.title}}</text>
-            <view class="help link" data-term="真太阳时" bindtap="openTip" aria-label="真太阳时说明" hover-class="tap-active">?</view>
+            <view class="help" data-term="真太阳时" bindtap="openTip" aria-label="真太阳时说明" hover-class="tap-active">?</view>
           </view>
           <view class="aux setting-hint">{{copy.trueSolar.hint}}</view>
           <view wx:if="{{input.precision === 'unknown'}}" class="aux setting-hint">{{trueSolarDisabledHint}}</view>
@@ -50,7 +50,7 @@
       <view wx:if="{{ziSectVisible}}" id="zi-sect-row" class="row column">
         <view class="label-row">
           <text class="setting-title">{{copy.ziSect.title}}</text>
-          <view class="help link" data-term="子时派别" bindtap="openTip" aria-label="子时派别说明" hover-class="tap-active">?</view>
+          <view class="help" data-term="子时派别" bindtap="openTip" aria-label="子时派别说明" hover-class="tap-active">?</view>
         </view>
         <view class="aux setting-hint">{{copy.ziSect.hint}}</view>
         <segmented id="zi-sect" class="inline-seg" items="{{ziSectItems}}" value="{{input.ziSect}}" bind:change="onZiSect" />
@@ -76,7 +76,7 @@
       <view class="row column">
         <view class="label-row">
           <text class="setting-title">{{copy.ziSect.title}}</text>
-          <view class="help link" data-term="子时派别" bindtap="openTip" aria-label="子时派别说明" hover-class="tap-active">?</view>
+          <view class="help" data-term="子时派别" bindtap="openTip" aria-label="子时派别说明" hover-class="tap-active">?</view>
         </view>
         <view class="aux setting-hint">{{copy.ziSect.hint}}</view>
         <segmented class="inline-seg" items="{{ziSectItems}}" value="{{rvSect}}" bind:change="onRvSect" />

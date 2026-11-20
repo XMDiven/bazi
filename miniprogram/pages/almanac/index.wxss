@@ -1,5 +1,6 @@
 .head-row { display: flex; align-items: center; gap: var(--sp-2); margin-bottom: var(--sp-3); }
 .nav-btn { min-width: var(--tap); min-height: var(--tap); line-height: var(--tap); text-align: center; font-size: var(--fs-title); }
+/* 朱砂色只留给「今天」圆点和选中圈（PRD 13.2：全页不超过两处） */
 .today-btn { margin-left: auto; min-height: var(--tap); line-height: var(--tap); }
 .day-summary { margin-top: var(--sp-3); }
 .summary-foot { border-bottom: none; }
