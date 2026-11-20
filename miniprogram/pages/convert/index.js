@@ -1,6 +1,5 @@
 const { SUBTITLE, DISCLAIMER_SHORT } = require('../../core/constants');
 const { FEATURES } = require('../../core/features');
-const { beijingNow } = require('../../core/wallTime');
 const { validateInput } = require('../../core/validate');
 const { calculate } = require('../../core/calculate');
 const { getCityById } = require('../../core/cities');
@@ -23,10 +22,13 @@ const RV_FIELDS = [
 ];
 const RV_REQUIRED_MSG = { year: '请选择年柱', month: '请选择月柱', day: '请选择日柱' };
 
+// 首次使用（没有上次输入）时滚轮停在 1990 年：换算页主要用来查出生信息，从今年往回滚要 30–50 格。
+// 查今天的路径走万年历「用这一天换算」，会预填日期，不受影响。
+const FIRST_RUN_DATE = { year: 1990, month: 1, day: 1 };
+
 function defaultInput(settings) {
-  const today = beijingNow(Date.now());
   return {
-    calendar: 'solar', year: today.year, month: today.month, day: today.day, isLeapMonth: false,
+    calendar: 'solar', ...FIRST_RUN_DATE, isLeapMonth: false,
     precision: 'exact', hour: 12, minute: 0, shichen: 6,
     cityId: settings.cityId, useTrueSolarTime: settings.useTrueSolarTime, ziSect: settings.ziSect, applyDst: false,
   };

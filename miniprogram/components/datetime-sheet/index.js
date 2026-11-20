@@ -1,5 +1,5 @@
 const P = require('../../core/pickerModel');
-const { SHICHEN } = require('../../core/shichen');
+const { SHICHEN, clockTimeHint } = require('../../core/shichen');
 
 const CALENDAR_ITEMS = [{ key: 'solar', text: '公历' }, { key: 'lunar', text: '农历' }];
 const PRECISION_ITEMS = [
@@ -25,6 +25,7 @@ Component({
     columns: null,
     dateIndexes: [0, 0, 0],
     timeIndexes: [12, 0],
+    clockHint: '',
   },
   observers: {
     show(show) {
@@ -42,6 +43,7 @@ Component({
         columns: P.columnsFor(draft),
         dateIndexes: P.toIndexes(draft),
         timeIndexes: [draft.hour, draft.minute],
+        clockHint: clockTimeHint(draft.hour, draft.minute),
       });
     },
     onCalendar(e) {
@@ -57,7 +59,7 @@ Component({
     },
     onTimeChange(e) {
       const [hour, minute] = e.detail.value;
-      this.setData({ draft: { ...this.data.draft, hour, minute }, timeIndexes: [hour, minute] });
+      this.setData({ draft: { ...this.data.draft, hour, minute }, timeIndexes: [hour, minute], clockHint: clockTimeHint(hour, minute) });
     },
     onShichen(e) {
       this.setData({ draft: { ...this.data.draft, shichen: Number(e.currentTarget.dataset.index) } });

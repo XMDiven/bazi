@@ -5,6 +5,7 @@
 .wheel { height: 240rpx; margin: var(--sp-3) 0; }
 .wheel-item { line-height: 80rpx; text-align: center; font-size: var(--fs-body); color: var(--ink); }
 .wheel-indicator { height: 80rpx; }
+.clock-hint { text-align: center; margin-top: calc(-1 * var(--sp-2)); }
 .section-label { margin: var(--sp-3) 0 var(--sp-2); }
 /* 13 个时辰（子时拆早、晚）排成 4 列宫格，一屏放下，不用滚动 */
 .shichen-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--sp-2); margin-top: var(--sp-3); }

@@ -28,6 +28,7 @@
         <view wx:for="{{minuteOptions}}" wx:key="*this" class="wheel-item">{{item}}</view>
       </picker-view-column>
     </picker-view>
+    <view wx:if="{{draft.precision === 'exact'}}" id="clock-hint" class="aux clock-hint">{{clockHint}}</view>
 
     <view wx:if="{{draft.precision === 'shichen'}}" class="shichen-grid">
       <view
