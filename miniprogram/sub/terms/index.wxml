@@ -7,6 +7,7 @@
       wx:for="{{rows}}" wx:key="name"
       class="row term-row {{item.past ? 'past' : ''}}"
       data-index="{{index}}" bindtap="onRow"
+      hover-class="tap-active"
     >
       <view class="term-name">
         <text>{{item.name}}</text>

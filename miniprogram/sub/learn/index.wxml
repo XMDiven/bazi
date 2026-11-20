@@ -1,6 +1,6 @@
 <view class="page">
   <view class="card">
-    <view wx:for="{{articles}}" wx:key="id" class="row article-item" data-id="{{item.id}}" bindtap="onOpen">
+    <view wx:for="{{articles}}" wx:key="id" class="row article-item" data-id="{{item.id}}" bindtap="onOpen" hover-class="tap-active">
       <text>{{item.title}}</text><text class="aux">›</text>
     </view>
   </view>

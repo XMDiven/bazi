@@ -5,6 +5,7 @@
     class="day-cell {{item.inMonth ? '' : 'out'}}"
     data-date="{{item.key}}" bindtap="onCell"
     aria-label="{{item.date.month}}月{{item.day}}日 {{item.sub}}"
+    hover-class="tap-active"
   >
     <view class="num {{item.isToday ? 'today' : ''}} {{item.isSelected ? 'selected' : ''}}">{{item.day}}</view>
     <view class="sub {{item.subKind === 'term' || item.subKind === 'festival' ? 'sub-strong' : ''}}">{{item.sub}}</view>

@@ -2,14 +2,14 @@
   <view class="aux subtitle">{{subtitle}}</view>
 
   <view wx:if="{{showModeSwitch}}" class="seg mode-switch" role="tablist">
-    <view id="mode-birth" class="seg-item {{mode === 'birth' ? 'seg-on' : ''}}" data-key="birth" bindtap="onMode">出生信息</view>
-    <view id="mode-reverse" class="seg-item {{mode === 'reverse' ? 'seg-on' : ''}}" data-key="reverse" bindtap="onMode">四柱反查</view>
+    <view id="mode-birth" class="seg-item {{mode === 'birth' ? 'seg-on' : ''}}" data-key="birth" bindtap="onMode" hover-class="tap-active">出生信息</view>
+    <view id="mode-reverse" class="seg-item {{mode === 'reverse' ? 'seg-on' : ''}}" data-key="reverse" bindtap="onMode" hover-class="tap-active">四柱反查</view>
   </view>
 
   <!-- 出生信息 -->
   <block wx:if="{{mode === 'birth'}}">
     <view class="card">
-      <view id="date-field" class="row" bindtap="openDate">
+      <view id="date-field" class="row" bindtap="openDate" hover-class="tap-active">
         <text class="field-label">日期与时间</text>
         <view class="field-value">
           <view>{{dateText}}</view>
@@ -23,7 +23,7 @@
         <view class="setting-head">
           <view class="label-row">
             <text class="setting-title">{{copy.trueSolar.title}}</text>
-            <text class="help link" data-term="真太阳时" bindtap="openTip" aria-label="真太阳时说明">?</text>
+            <view class="help link" data-term="真太阳时" bindtap="openTip" aria-label="真太阳时说明" hover-class="tap-active">?</view>
           </view>
           <view class="aux setting-hint">{{copy.trueSolar.hint}}</view>
         </view>
@@ -34,7 +34,7 @@
         <view>{{solarPreview.change}}</view>
       </view>
 
-      <view id="city-field" class="row" bindtap="openCity">
+      <view id="city-field" class="row" bindtap="openCity" hover-class="tap-active">
         <text class="field-label">出生地</text>
         <text class="field-value {{cityText ? '' : 'placeholder'}}">{{cityText || (input.useTrueSolarTime ? '请选择' : '选填')}}</text>
       </view>
@@ -43,7 +43,7 @@
       <view wx:if="{{ziSectVisible}}" id="zi-sect-row" class="row column">
         <view class="label-row">
           <text class="setting-title">{{copy.ziSect.title}}</text>
-          <text class="help link" data-term="子时派别" bindtap="openTip" aria-label="子时派别说明">?</text>
+          <view class="help link" data-term="子时派别" bindtap="openTip" aria-label="子时派别说明" hover-class="tap-active">?</view>
         </view>
         <view class="aux setting-hint">{{copy.ziSect.hint}}</view>
         <segmented id="zi-sect" class="inline-seg" items="{{ziSectItems}}" value="{{input.ziSect}}" bind:change="onZiSect" />
@@ -57,7 +57,7 @@
   <block wx:else>
     <view class="card">
       <block wx:for="{{rvFields}}" wx:key="key">
-        <view id="{{item.id}}" class="row" data-field="{{item.key}}" bindtap="openRv">
+        <view id="{{item.id}}" class="row" data-field="{{item.key}}" bindtap="openRv" hover-class="tap-active">
           <text class="field-label">{{item.label}}</text>
           <text class="field-value {{rv[item.key] ? '' : 'placeholder'}}">{{rv[item.key] || (item.key === 'time' ? '不填' : '请选择')}}</text>
         </view>
@@ -66,7 +66,7 @@
       <view class="row column">
         <view class="label-row">
           <text class="setting-title">{{copy.ziSect.title}}</text>
-          <text class="help link" data-term="子时派别" bindtap="openTip" aria-label="子时派别说明">?</text>
+          <view class="help link" data-term="子时派别" bindtap="openTip" aria-label="子时派别说明" hover-class="tap-active">?</view>
         </view>
         <view class="aux setting-hint">{{copy.ziSect.hint}}</view>
         <segmented class="inline-seg" items="{{ziSectItems}}" value="{{rvSect}}" bind:change="onRvSect" />

@@ -5,6 +5,7 @@
     class="seg-item {{item.key === value ? 'seg-on' : ''}}"
     role="tab" aria-selected="{{item.key === value}}"
     data-key="{{item.key}}" bindtap="onTap"
+    hover-class="tap-active"
   >
     <view>{{item.text}}</view>
     <view wx:if="{{item.sub}}" class="seg-sub">{{item.sub}}</view>

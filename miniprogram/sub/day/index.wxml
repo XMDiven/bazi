@@ -5,7 +5,7 @@
       <view class="title">{{detail.solarText}}</view>
       <view>{{detail.lunarText}} · {{detail.shengXiao}}</view>
       <view>{{detail.ganzhiText}}</view>
-      <view wx:if="{{detail.term}}" class="link" data-term="节" bindtap="onTerm">{{detail.term.name}} {{detail.term.timeText}} 交节</view>
+      <view wx:if="{{detail.term}}" class="link" data-term="节" bindtap="onTerm" hover-class="tap-active">{{detail.term.name}} {{detail.term.timeText}} 交节</view>
       <view wx:if="{{detail.festivals.length}}" class="aux">{{festivalText}}</view>
     </view>
 
@@ -15,7 +15,7 @@
         <text class="hour-name">{{item.name}}</text>
         <text class="aux hour-range">{{item.range}}</text>
         <text class="hour-gz">{{item.ganzhi}}</text>
-        <text wx:if="{{item.note}}" class="aux link hour-note" data-term="子时派别" bindtap="onTerm">{{item.note}}</text>
+        <view wx:if="{{item.note}}" class="aux link hour-note" data-term="子时派别" bindtap="onTerm" hover-class="tap-active">{{item.note}}</view>
       </view>
     </view>
 

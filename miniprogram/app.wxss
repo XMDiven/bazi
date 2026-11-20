@@ -8,6 +8,7 @@ page {
   --accent: #A8432E;
   --on-accent: #FFFFFF;
   --notice: #F4EEDF;
+  --press: #EFECE5;
 
   --fs-display: 64rpx;
   --fs-title: 36rpx;
@@ -41,6 +42,7 @@ page {
     --accent: #D9735C;
     --on-accent: #141413;
     --notice: #2A261C;
+    --press: #2A2927;
   }
 }
 
@@ -138,3 +140,8 @@ button::after { border: none; }
   background-color: var(--accent) !important;
   border-color: var(--accent) !important;
 }
+
+/* 按下态：可点的 view 统一加 hover-class="tap-active"。
+   左滑列表项下面压着操作按钮，降透明度会透出按钮，改用 tap-press 换底色。 */
+.tap-active { opacity: 0.6; }
+.tap-press { background-color: var(--press); }

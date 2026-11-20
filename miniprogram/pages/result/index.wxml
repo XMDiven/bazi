@@ -11,7 +11,7 @@
     <method-bar chips="{{view.methodChips}}" bind:chip="onChip" />
 
     <notice wx:if="{{profileDirty}}" lines="{{['算法设定已改变，是否更新到档案？']}}">
-      <view class="link update-profile" bindtap="onUpdateProfile">更新到档案</view>
+      <view class="link update-profile" bindtap="onUpdateProfile" hover-class="tap-active">更新到档案</view>
     </notice>
     <notice lines="{{view.warnings}}" />
 
@@ -27,13 +27,13 @@
       <view wx:for="{{view.timeLines}}" wx:key="*this">{{item}}</view>
     </view>
 
-    <view id="terms-block" class="card block" bindtap="openTerms">
+    <view id="terms-block" class="card block" bindtap="openTerms" hover-class="tap-active">
       <view class="block-title row-title"><text>节气</text><text class="aux">节气表 ›</text></view>
       <view wx:for="{{view.termsLines}}" wx:key="*this">{{item}}</view>
     </view>
 
     <view class="card block">
-      <view id="derivation-toggle" class="block-title row-title" bindtap="toggleDerivation">
+      <view id="derivation-toggle" class="block-title row-title" bindtap="toggleDerivation" hover-class="tap-active">
         <text>推导过程</text><text class="aux">{{derivationOpen ? '收起' : '展开'}}</text>
       </view>
       <view wx:if="{{derivationOpen}}" class="derivation">
@@ -54,7 +54,7 @@
 
 <sheet show="{{!!methodKind}}" title="{{methodTitle}}" bind:close="closeMethod">
   <view wx:if="{{methodHint}}" class="aux method-hint">{{methodHint}}</view>
-  <view wx:for="{{methodOptions}}" wx:key="key" class="row method-option {{item.selected ? 'option-on' : ''}}" data-key="{{item.key}}" bindtap="onMethodOption">
+  <view wx:for="{{methodOptions}}" wx:key="key" class="row method-option {{item.selected ? 'option-on' : ''}}" data-key="{{item.key}}" bindtap="onMethodOption" hover-class="tap-active">
     <text>{{item.text}}</text><text wx:if="{{item.selected}}">✓</text>
   </view>
 </sheet>

@@ -1,19 +1,19 @@
 <sheet show="{{show}}" title="出生地" bind:close="onClose">
   <input id="city-search" class="search" placeholder="搜索城市或省份" value="{{query}}" bindinput="onInput" confirm-type="search" />
   <block wx:if="{{query}}">
-    <view wx:for="{{results}}" wx:key="id" class="row city-item {{item.id === value ? 'city-on' : ''}}" data-id="{{item.id}}" bindtap="onCity">
+    <view wx:for="{{results}}" wx:key="id" class="row city-item {{item.id === value ? 'city-on' : ''}}" data-id="{{item.id}}" bindtap="onCity" hover-class="tap-active">
       <text>{{item.name}}</text><text class="aux">{{item.province}}</text>
     </view>
     <view wx:if="{{!results.length}}" class="aux empty-search">没有找到「{{query}}」。</view>
   </block>
   <block wx:else>
-    <view class="row city-item" bindtap="onNone"><text>不选择出生地</text></view>
+    <view class="row city-item" bindtap="onNone" hover-class="tap-active"><text>不选择出生地</text></view>
     <block wx:for="{{groups}}" wx:key="province" wx:for-item="group">
-      <view class="row province" data-province="{{group.province}}" bindtap="onProvince">
+      <view class="row province" data-province="{{group.province}}" bindtap="onProvince" hover-class="tap-active">
         <text>{{group.province}}</text><text class="aux">{{openProvince === group.province ? '收起' : '展开'}}</text>
       </view>
       <block wx:if="{{openProvince === group.province}}">
-        <view wx:for="{{group.cities}}" wx:key="id" class="row city-item city-sub {{item.id === value ? 'city-on' : ''}}" data-id="{{item.id}}" bindtap="onCity">
+        <view wx:for="{{group.cities}}" wx:key="id" class="row city-item city-sub {{item.id === value ? 'city-on' : ''}}" data-id="{{item.id}}" bindtap="onCity" hover-class="tap-active">
           <text>{{item.name}}</text>
         </view>
       </block>

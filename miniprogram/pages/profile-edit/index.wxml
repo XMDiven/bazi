@@ -8,7 +8,7 @@
       </view>
       <view wx:if="{{errors.name}}" class="field-error">{{errors.name}}</view>
 
-      <view class="row" bindtap="openDate">
+      <view class="row" bindtap="openDate" hover-class="tap-active">
         <text class="field-label">日期与时间</text>
         <view class="field-value"><view>{{dateText}}</view><view class="aux">{{timeText}}</view></view>
       </view>
@@ -22,7 +22,7 @@
         </view>
         <switch checked="{{input.useTrueSolarTime}}" disabled="{{input.precision === 'unknown'}}" bindchange="onTrueSolar" />
       </view>
-      <view class="row" bindtap="openCity">
+      <view class="row" bindtap="openCity" hover-class="tap-active">
         <text class="field-label">出生地</text>
         <text class="field-value {{cityText ? '' : 'placeholder'}}">{{cityText || '选填'}}</text>
       </view>

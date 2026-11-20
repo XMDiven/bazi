@@ -9,9 +9,9 @@
   </view>
 
   <view class="card">
-    <view id="copy-profiles" class="row" bindtap="onCopyProfiles"><text>复制全部档案</text><text class="aux">换机时自行保存</text></view>
-    <view id="clear-recent" class="row" bindtap="onClearRecent"><text>清空最近</text><text class="aux">›</text></view>
-    <view id="clear-all" class="row danger" bindtap="openClearAll"><text>清除全部数据</text><text class="aux">›</text></view>
+    <view id="copy-profiles" class="row" bindtap="onCopyProfiles" hover-class="tap-active"><text>复制全部档案</text><text class="aux">换机时自行保存</text></view>
+    <view id="clear-recent" class="row" bindtap="onClearRecent" hover-class="tap-active"><text>清空最近</text><text class="aux">›</text></view>
+    <view id="clear-all" class="row danger" bindtap="openClearAll" hover-class="tap-active"><text>清除全部数据</text><text class="aux">›</text></view>
   </view>
 </view>
 

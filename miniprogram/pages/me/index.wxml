@@ -6,7 +6,7 @@
     <view class="row column">
       <view class="label-row">
         <text class="setting-title">{{copy.ziSect.title}}</text>
-        <text class="help link" data-id="K6" bindtap="openArticle" aria-label="子时派别说明">?</text>
+        <view class="help link" data-id="K6" bindtap="openArticle" aria-label="子时派别说明" hover-class="tap-active">?</view>
       </view>
       <view class="aux setting-hint">{{copy.ziSect.hint}}</view>
       <segmented id="settings-zi-sect" class="inline-seg" items="{{ziSectItems}}" value="{{settings.ziSect}}" bind:change="onZiSect" />
@@ -15,16 +15,16 @@
       <view class="setting-head">
         <view class="label-row">
           <text class="setting-title">{{copy.trueSolar.title}}</text>
-          <text class="help link" data-id="K5" bindtap="openArticle" aria-label="真太阳时说明">?</text>
+          <view class="help link" data-id="K5" bindtap="openArticle" aria-label="真太阳时说明" hover-class="tap-active">?</view>
         </view>
         <view class="aux setting-hint">{{copy.trueSolar.hint}}</view>
       </view>
       <switch checked="{{settings.useTrueSolarTime}}" bindchange="onTrueSolar" />
     </view>
-    <view class="row" bindtap="openCity">
+    <view class="row" bindtap="openCity" hover-class="tap-active">
       <view class="label-row">
         <text class="field-label">默认出生地</text>
-        <text class="help link" data-id="K5" catchtap="openArticle" aria-label="出生地说明">?</text>
+        <view class="help link" data-id="K5" catchtap="openArticle" aria-label="出生地说明" hover-class="tap-active">?</view>
       </view>
       <text>{{cityText}}</text>
     </view>
@@ -32,10 +32,10 @@
   </view>
 
   <view class="card">
-    <view class="row" data-url="/sub/learn/index" bindtap="openPage"><text>知识库</text><text class="aux">›</text></view>
-    <view class="row" data-url="/sub/privacy/index" bindtap="openPage"><text>数据与隐私</text><text class="aux">›</text></view>
+    <view class="row" data-url="/sub/learn/index" bindtap="openPage" hover-class="tap-active"><text>知识库</text><text class="aux">›</text></view>
+    <view class="row" data-url="/sub/privacy/index" bindtap="openPage" hover-class="tap-active"><text>数据与隐私</text><text class="aux">›</text></view>
     <button class="row plain-row" open-type="feedback"><text>意见反馈</text><text class="aux">›</text></button>
-    <view class="row" data-url="/sub/about/index" bindtap="openPage"><text>关于</text><text class="aux">›</text></view>
+    <view class="row" data-url="/sub/about/index" bindtap="openPage" hover-class="tap-active"><text>关于</text><text class="aux">›</text></view>
   </view>
 </view>
 <city-sheet show="{{showCitySheet}}" value="{{settings.cityId}}" bind:select="onCitySelect" bind:close="closeCity" />

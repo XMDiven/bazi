@@ -5,7 +5,8 @@
       class="cell {{item.enabled ? '' : 'cell-off'}} {{item.selected ? 'cell-on' : ''}}"
       aria-disabled="{{!item.enabled}}"
       data-gz="{{item.gz}}" data-enabled="{{item.enabled}}" bindtap="onCell"
+      hover-class="{{item.enabled ? 'tap-active' : 'none'}}"
     >{{item.gz}}</view>
   </view>
-  <view wx:if="{{allowEmpty}}" class="row empty-choice" bindtap="onEmpty"><text>不填</text></view>
+  <view wx:if="{{allowEmpty}}" class="row empty-choice" bindtap="onEmpty" hover-class="tap-active"><text>不填</text></view>
 </sheet>

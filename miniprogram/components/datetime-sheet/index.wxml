@@ -1,5 +1,5 @@
 <sheet show="{{show}}" title="出生日期与时间" bind:close="onClose">
-  <view slot="action" id="datetime-confirm" class="confirm" bindtap="onConfirm">确定</view>
+  <view slot="action" id="datetime-confirm" class="confirm" bindtap="onConfirm" hover-class="tap-active">确定</view>
   <block wx:if="{{draft}}">
     <segmented items="{{calendarItems}}" value="{{draft.calendar}}" bind:change="onCalendar" />
     <picker-view class="wheel" indicator-class="wheel-indicator" value="{{dateIndexes}}" bindchange="onDateChange">
@@ -31,6 +31,7 @@
         wx:for="{{shichenList}}" wx:key="index"
         class="row shichen-item {{draft.shichen === item.index ? 'shichen-on' : ''}}"
         data-index="{{item.index}}" bindtap="onShichen"
+        hover-class="tap-active"
       >
         <text>{{item.name}}</text>
         <text class="aux">{{item.start}}–{{item.end}}</text>

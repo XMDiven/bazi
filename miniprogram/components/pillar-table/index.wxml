@@ -1,24 +1,24 @@
 <view wx:if="{{table}}" class="ptable" style="grid-template-columns: 112rpx repeat({{table.columns.length}}, 1fr);">
   <view class="ph"></view>
-  <view wx:for="{{table.columns}}" wx:key="key" class="ph cellh {{changed[index] ? 'changed' : ''}}" data-term="四柱" bindtap="onCell">{{item.label}}</view>
+  <view wx:for="{{table.columns}}" wx:key="key" class="ph cellh {{changed[index] ? 'changed' : ''}}" data-term="四柱" bindtap="onCell" hover-class="tap-active">{{item.label}}</view>
 
-  <view class="rh" data-term="天干" bindtap="onCell">天干</view>
-  <view wx:for="{{table.columns}}" wx:key="key" class="pc gan-cell" data-term="天干" bindtap="onCell" aria-label="{{item.label}}，天干{{item.gan}}，五行{{item.ganWuXing}}">
+  <view class="rh" data-term="天干" bindtap="onCell" hover-class="tap-active">天干</view>
+  <view wx:for="{{table.columns}}" wx:key="key" class="pc gan-cell" data-term="天干" bindtap="onCell" aria-label="{{item.label}}，天干{{item.gan}}，五行{{item.ganWuXing}}" hover-class="tap-active">
     <text class="gz">{{item.gan}}</text><text class="wx">{{item.ganWuXing}}</text>
   </view>
 
-  <view class="rh" data-term="地支" bindtap="onCell">地支</view>
-  <view wx:for="{{table.columns}}" wx:key="key" class="pc" data-term="地支" bindtap="onCell" aria-label="{{item.label}}，地支{{item.zhi}}，五行{{item.zhiWuXing}}">
+  <view class="rh" data-term="地支" bindtap="onCell" hover-class="tap-active">地支</view>
+  <view wx:for="{{table.columns}}" wx:key="key" class="pc" data-term="地支" bindtap="onCell" aria-label="{{item.label}}，地支{{item.zhi}}，五行{{item.zhiWuXing}}" hover-class="tap-active">
     <text class="gz">{{item.zhi}}</text><text class="wx">{{item.zhiWuXing}}</text>
   </view>
 
   <block wx:if="{{table.showHideGan}}">
-    <view class="rh" data-term="藏干" bindtap="onCell">藏干</view>
-    <view wx:for="{{table.columns}}" wx:key="key" class="pc small" data-term="藏干" bindtap="onCell" aria-label="{{item.label}}，藏干{{item.hideGanText}}">{{item.hideGanText}}</view>
+    <view class="rh" data-term="藏干" bindtap="onCell" hover-class="tap-active">藏干</view>
+    <view wx:for="{{table.columns}}" wx:key="key" class="pc small" data-term="藏干" bindtap="onCell" aria-label="{{item.label}}，藏干{{item.hideGanText}}" hover-class="tap-active">{{item.hideGanText}}</view>
   </block>
 
   <block wx:if="{{table.showNaYin}}">
-    <view class="rh" data-term="纳音" bindtap="onCell">纳音</view>
-    <view wx:for="{{table.columns}}" wx:key="key" class="pc small" data-term="纳音" bindtap="onCell" aria-label="{{item.label}}，纳音{{item.naYin}}">{{item.naYin}}</view>
+    <view class="rh" data-term="纳音" bindtap="onCell" hover-class="tap-active">纳音</view>
+    <view wx:for="{{table.columns}}" wx:key="key" class="pc small" data-term="纳音" bindtap="onCell" aria-label="{{item.label}}，纳音{{item.naYin}}" hover-class="tap-active">{{item.naYin}}</view>
   </block>
 </view>
