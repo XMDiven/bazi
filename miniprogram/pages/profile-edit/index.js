@@ -1,7 +1,7 @@
 const { decodeInput, encodeInput } = require('../../core/queryCodec');
 const { validateInput } = require('../../core/validate');
 const { calculate } = require('../../core/calculate');
-const { getCityById } = require('../../core/cities');
+const { getCityById, cityLabel } = require('../../core/cities');
 const { dateText, timeText } = require('../../core/pickerModel');
 const R = require('../../core/records');
 const storage = require('../../services/storage');
@@ -70,7 +70,7 @@ Page({
       input,
       dateText: dateText(input),
       timeText: timeText(input),
-      cityText: city ? `${city.name} · ${city.province}` : '',
+      cityText: cityLabel(city),
       summary: summaryOf(input),
     });
   },
@@ -93,6 +93,10 @@ Page({
   },
   closeCity() {
     this.setData({ showCitySheet: false });
+  },
+  clearCity() {
+    this.setInput({ ...this.data.input, cityId: null });
+    this.setData({ 'errors.city': '' });
   },
   onCitySelect(e) {
     this.setInput({ ...this.data.input, cityId: e.detail.cityId });

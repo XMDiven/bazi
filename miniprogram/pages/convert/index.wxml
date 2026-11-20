@@ -42,7 +42,8 @@
         <text class="field-label">出生地</text>
         <view class="field-end">
           <text class="field-value {{cityText ? '' : 'placeholder'}}">{{cityText || (input.useTrueSolarTime ? '请选择' : '选填')}}</text>
-          <text class="chevron">›</text>
+          <view wx:if="{{cityText}}" class="field-clear" catchtap="clearCity" hover-stop-propagation hover-class="tap-active" aria-label="清除出生地">×</view>
+          <text wx:else class="chevron">›</text>
         </view>
       </view>
       <view wx:if="{{errors.city}}" class="field-error">{{errors.city}}</view>

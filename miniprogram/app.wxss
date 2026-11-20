@@ -130,6 +130,8 @@ button::after { border: none; }
 
 .field-label { color: var(--ink-2); }
 .field-value { text-align: right; }
+/* 已选值旁的清除按钮：替换「›」，点它只清空不打开弹层 */
+.field-clear { min-width: 56rpx; height: 56rpx; line-height: 52rpx; text-align: center; border-radius: 50%; color: var(--ink-2); font-size: var(--fs-title); margin-right: -12rpx; }
 /* 可打开弹层的字段：值与「›」靠右成组 */
 .field-end { display: flex; align-items: center; gap: var(--sp-2); }
 .chevron { color: var(--ink-2); }

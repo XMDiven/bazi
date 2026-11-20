@@ -7,8 +7,8 @@ const GROUPS = groupByProvince();
 function locate(cityId) {
   const city = getCityById(cityId);
   const pi = city ? GROUPS.findIndex(g => g.province === city.province) : -1;
-  if (pi < 0) return { activeIndex: 0, cityAnchor: 'c-0-0' };
-  return { activeIndex: pi, cityAnchor: `c-${pi}-${GROUPS[pi].cities.findIndex(c => c.id === cityId)}` };
+  if (pi < 0) return { activeIndex: 0, selectedIndex: -1, cityAnchor: 'c-0-0' };
+  return { activeIndex: pi, selectedIndex: pi, cityAnchor: `c-${pi}-${GROUPS[pi].cities.findIndex(c => c.id === cityId)}` };
 }
 
 Component({
@@ -22,6 +22,7 @@ Component({
     results: [],
     groups: GROUPS,
     activeIndex: 0,
+    selectedIndex: -1,
     cityAnchor: '',
     recentList: [],
     hotList: hotCities(),
@@ -46,6 +47,9 @@ Component({
     onInput(e) {
       const query = e.detail.value;
       this.setData({ query, results: searchCities(query) });
+    },
+    onClearQuery() {
+      this.setData({ query: '', results: [] });
     },
     onProvince(e) {
       const index = Number(e.currentTarget.dataset.index);

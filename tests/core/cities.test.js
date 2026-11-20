@@ -1,7 +1,7 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
 const DATA = require('../../miniprogram/core/data/cities');
-const { getCityById, searchCities, groupByProvince, provinceShort, hotCities, recentCities } = require('../../miniprogram/core/cities');
+const { getCityById, searchCities, groupByProvince, provinceShort, cityLabel, hotCities, recentCities } = require('../../miniprogram/core/cities');
 
 test('covers prefecture-level cities with unique ids', () => {
   assert.ok(DATA.length >= 300);
@@ -52,4 +52,10 @@ test('provinceShort', () => {
   assert.equal(provinceShort('内蒙古自治区'), '内蒙古');
   assert.equal(provinceShort('香港特别行政区'), '香港');
   assert.equal(provinceShort('黑龙江省'), '黑龙江');
+});
+test('cityLabel', () => {
+  assert.equal(cityLabel(getCityById('新疆维吾尔自治区-乌鲁木齐')), '乌鲁木齐 · 新疆');
+  assert.equal(cityLabel(getCityById('北京市-北京')), '北京');
+  assert.equal(cityLabel(getCityById('香港特别行政区-香港')), '香港');
+  assert.equal(cityLabel(null), '');
 });

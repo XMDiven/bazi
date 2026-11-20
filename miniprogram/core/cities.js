@@ -51,4 +51,11 @@ function recentCities({ defaultCityId = null, recent = [], profiles = [] } = {},
   return out;
 }
 
-module.exports = { getCityById, searchCities, groupByProvince, provinceShort, hotCities, recentCities };
+/** 字段里显示的城市名：城市 · 省份简称；直辖市、港澳只显示一次（北京，而不是 北京 · 北京） */
+function cityLabel(city) {
+  if (!city) return '';
+  const short = provinceShort(city.province);
+  return city.name === short ? city.name : `${city.name} · ${short}`;
+}
+
+module.exports = { getCityById, searchCities, groupByProvince, provinceShort, cityLabel, hotCities, recentCities };

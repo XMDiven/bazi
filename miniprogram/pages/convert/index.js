@@ -2,7 +2,7 @@ const { SUBTITLE, DISCLAIMER_SHORT } = require('../../core/constants');
 const { FEATURES } = require('../../core/features');
 const { validateInput } = require('../../core/validate');
 const { calculate } = require('../../core/calculate');
-const { getCityById } = require('../../core/cities');
+const { getCityById, cityLabel } = require('../../core/cities');
 const { encodeInput } = require('../../core/queryCodec');
 const { dateText, timeText } = require('../../core/pickerModel');
 const { JIA_ZI, monthOptionsForYear, timeOptionsForDay } = require('../../core/pillarOptions');
@@ -99,7 +99,7 @@ Page({
       input,
       dateText: dateText(input),
       timeText: timeText(input),
-      cityText: city ? `${city.name} · ${city.province}` : '',
+      cityText: cityLabel(city),
       // 隐藏子时派别时不改 input.ziSect，用户已选的值保留（PRD 5.5）
       ziSectVisible: ziSectMatters(input),
       solarPreview: trueSolarPreview(input),
@@ -126,6 +126,10 @@ Page({
   },
   closeCity() {
     this.setData({ showCitySheet: false });
+  },
+  clearCity() {
+    this.setInput({ ...this.data.input, cityId: null });
+    this.setData({ 'errors.city': '' });
   },
   onCitySelect(e) {
     this.setInput({ ...this.data.input, cityId: e.detail.cityId });

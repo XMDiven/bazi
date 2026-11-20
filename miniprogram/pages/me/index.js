@@ -1,6 +1,6 @@
 const { ME_HEADER } = require('../../core/constants');
 const { METHOD_COPY, ZI_SECT_ITEMS } = require('../../core/methodHints');
-const { getCityById } = require('../../core/cities');
+const { getCityById, cityLabel } = require('../../core/cities');
 const storage = require('../../services/storage');
 
 Page({
@@ -19,7 +19,7 @@ Page({
 
   setSettings(settings) {
     const city = getCityById(settings.cityId);
-    this.setData({ settings, cityText: city ? city.name : '未设置' });
+    this.setData({ settings, cityText: cityLabel(city) });
   },
 
   update(patch) {
@@ -42,6 +42,9 @@ Page({
   },
   closeCity() {
     this.setData({ showCitySheet: false });
+  },
+  clearCity() {
+    this.update({ cityId: null });
   },
   onCitySelect(e) {
     this.setData({ showCitySheet: false });

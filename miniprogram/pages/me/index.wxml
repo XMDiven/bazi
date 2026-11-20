@@ -27,8 +27,9 @@
         <view class="help" data-id="K5" catchtap="openArticle" aria-label="出生地说明" hover-class="tap-active">?</view>
       </view>
       <view class="field-end">
-        <text>{{cityText}}</text>
-        <text class="chevron">›</text>
+        <text class="field-value {{cityText ? '' : 'placeholder'}}">{{cityText || '未设置'}}</text>
+        <view wx:if="{{cityText}}" class="field-clear" catchtap="clearCity" hover-stop-propagation hover-class="tap-active" aria-label="清除出生地">×</view>
+        <text wx:else class="chevron">›</text>
       </view>
     </view>
     <view class="aux settings-note">只影响之后的新换算</view>
