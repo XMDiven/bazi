@@ -4,7 +4,7 @@ const { encodeInput, decodeInput } = require('../../miniprogram/core/queryCodec'
 const { makeInput } = require('../helpers');
 
 test('round trip', () => {
-  for (const input of [makeInput(), makeInput({ calendar: 'lunar', year: 2023, month: 2, day: 1, isLeapMonth: true, precision: 'shichen', shichen: 12, useTrueSolarTime: true, cityId: 'urumqi', ziSect: 'midnight' })]) {
+  for (const input of [makeInput(), makeInput({ calendar: 'lunar', year: 2023, month: 2, day: 1, isLeapMonth: true, precision: 'shichen', shichen: 12, useTrueSolarTime: true, cityId: '新疆维吾尔自治区-乌鲁木齐', ziSect: 'midnight' })]) {
     const s = encodeInput(input);
     assert.equal(typeof s, 'string');
     assert.deepEqual(decodeInput(s), input);

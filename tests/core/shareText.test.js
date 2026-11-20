@@ -10,7 +10,7 @@ test('copy text 4 lines', () => {
   assert.equal(buildCopyText(calculate(makeInput())).split('\n')[2], '子时派别 23:00 换日 · 真太阳时 关 · 夏令时 未扣除');
 });
 test('copy text excludes city', () => {
-  const t = buildCopyText(calculate(makeInput({ year: 1990, month: 7, day: 1, useTrueSolarTime: true, cityId: 'urumqi', applyDst: true })));
+  const t = buildCopyText(calculate(makeInput({ year: 1990, month: 7, day: 1, useTrueSolarTime: true, cityId: '新疆维吾尔自治区-乌鲁木齐', applyDst: true })));
   assert.ok(!t.includes('乌鲁木齐'));
   assert.equal(t.split('\n')[2], '子时派别 23:00 换日 · 真太阳时 开 · 夏令时 已扣除');
 });

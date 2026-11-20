@@ -42,7 +42,7 @@ test('bad precision', () => assert.equal(errs({ precision: 'x' }).time, '请选�
 test('true solar needs city', () => {
   assert.equal(errs({ useTrueSolarTime: true }).city, '开启真太阳时需先选择出生地');
   assert.equal(errs({ useTrueSolarTime: true, cityId: 'nope' }).city, '开启真太阳时需先选择出生地');
-  assert.equal(errs({ useTrueSolarTime: true, cityId: 'urumqi' }).city, undefined);
+  assert.equal(errs({ useTrueSolarTime: true, cityId: '新疆维吾尔自治区-乌鲁木齐' }).city, undefined);
 });
 test('unknown precision with true solar and no city is ok', () => assert.equal(validateInput(makeInput({ precision: 'unknown', useTrueSolarTime: true })).ok, true));
 test('non-object input', () => assert.equal(validateInput(null).ok, false));

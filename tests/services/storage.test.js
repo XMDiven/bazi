@@ -17,8 +17,8 @@ function memoryWx() {
 
 test('round trip', () => {
   global.wx = memoryWx();
-  assert.equal(S.saveSettings({ ziSect: 'midnight', useTrueSolarTime: true, cityId: 'urumqi' }), true);
-  assert.deepEqual(S.loadSettings(), { ziSect: 'midnight', useTrueSolarTime: true, cityId: 'urumqi' });
+  assert.equal(S.saveSettings({ ziSect: 'midnight', useTrueSolarTime: true, cityId: '新疆维吾尔自治区-乌鲁木齐' }), true);
+  assert.deepEqual(S.loadSettings(), { ziSect: 'midnight', useTrueSolarTime: true, cityId: '新疆维吾尔自治区-乌鲁木齐' });
   assert.equal(S.saveLastInput(makeInput()), true);
   assert.deepEqual(S.loadLastInput(), makeInput());
   assert.deepEqual(S.loadProfiles(), []);

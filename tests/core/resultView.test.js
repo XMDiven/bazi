@@ -6,7 +6,7 @@ const { DISCLAIMER } = require('../../miniprogram/core/constants');
 const { FEATURES } = require('../../miniprogram/core/features');
 const { makeInput } = require('../helpers');
 
-const URUMQI = makeInput({ year: 2024, month: 2, day: 4, hour: 18, minute: 0, useTrueSolarTime: true, cityId: 'urumqi' });
+const URUMQI = makeInput({ year: 2024, month: 2, day: 4, hour: 18, minute: 0, useTrueSolarTime: true, cityId: '新疆维吾尔自治区-乌鲁木齐' });
 
 test('basic view', () => {
   const v = buildResultView(calculate(makeInput()));
@@ -34,7 +34,7 @@ test('dst chip only when eligible', () => {
 });
 test('urumqi timeLines', () => {
   const v = buildResultView(calculate(URUMQI));
-  assert.deepEqual(v.timeLines, ['输入时间 2024年2月4日 18:00', '经度 −129.5 分钟', '均时差 −14.1 分钟', '修正后 2024年2月4日 15:36', '出生地 乌鲁木齐']);
+  assert.deepEqual(v.timeLines, ['输入时间 2024年2月4日 18:00', '经度 −129.6 分钟', '均时差 −14.1 分钟', '修正后 2024年2月4日 15:36', '出生地 乌鲁木齐']);
   assert.deepEqual(v.methodChips[1], { kind: 'true_solar', text: '真太阳时 开' });
 });
 test('shengXiao note in subline', () => {

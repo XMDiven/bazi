@@ -74,7 +74,7 @@ const ARTICLES = [
       '真太阳时只用来判定日柱和时柱，因为“哪一天”“哪个时辰”是当地时间的概念。年柱和月柱仍用北京时间与节气时刻比较，因为交节是全国同一瞬间发生的天文事件。',
       '开启真太阳时需要选择出生地。目前只支持境内城市与港澳台。',
     ],
-    example: example({ year: 2024, month: 2, day: 4, hour: 18, minute: 0, useTrueSolarTime: true, cityId: 'urumqi' }, '乌鲁木齐 18:00 的真太阳时约为 15:36；立春 16:27 已过，年柱仍按北京时间判定为甲辰。'),
+    example: example({ year: 2024, month: 2, day: 4, hour: 18, minute: 0, useTrueSolarTime: true, cityId: '新疆维吾尔自治区-乌鲁木齐' }, '乌鲁木齐 18:00 的真太阳时约为 15:36；立春 16:27 已过，年柱仍按北京时间判定为甲辰。'),
   },
   {
     id: 'K6',

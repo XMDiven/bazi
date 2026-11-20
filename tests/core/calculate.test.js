@@ -28,14 +28,14 @@ test('late zi sects', () => {
   assert.equal(calculate(makeInput({ ...b, ziSect: 'midnight' })).summary, '甲辰 丁卯 癸酉 甲子');
 });
 test('two-instant model: Urumqi across 立春', () => {
-  const r = calculate(makeInput({ year: 2024, month: 2, day: 4, hour: 18, minute: 0, useTrueSolarTime: true, cityId: 'urumqi' }));
+  const r = calculate(makeInput({ year: 2024, month: 2, day: 4, hour: 18, minute: 0, useTrueSolarTime: true, cityId: '新疆维吾尔自治区-乌鲁木齐' }));
   assert.deepEqual(r.localWall, w(2024, 2, 4, 15, 36));
   assert.equal(r.summary, '甲辰 丙寅 戊戌 庚申'); // 若全部按 local 计算会得到 '癸卯 乙丑 …'
   assert.equal(r.method.city.name, '乌鲁木齐');
   assert.equal(r.corrections.totalMinutes, -144);
 });
 test('Urumqi across day and year', () => {
-  const r = calculate(makeInput({ year: 1990, month: 1, day: 1, hour: 0, minute: 30, useTrueSolarTime: true, cityId: 'urumqi' }));
+  const r = calculate(makeInput({ year: 1990, month: 1, day: 1, hour: 0, minute: 30, useTrueSolarTime: true, cityId: '新疆维吾尔自治区-乌鲁木齐' }));
   assert.deepEqual(r.localWall, w(1989, 12, 31, 22, 17));
   assert.equal(r.summary, '己巳 丙子 乙丑 丁亥');
 });
@@ -70,7 +70,7 @@ test('unknown hour on non-立春 jie day: month only', () => {
   assert.deepEqual(r.warnings, ['当天 02:35 交立夏，时辰不详时月柱无法确定（交节前：庚辰月；交节后：辛巳月）']);
 });
 test('unknown ignores true solar time and dst', () => {
-  const r = calculate(makeInput({ year: 1990, month: 7, day: 1, precision: 'unknown', useTrueSolarTime: true, cityId: 'urumqi', applyDst: true }));
+  const r = calculate(makeInput({ year: 1990, month: 7, day: 1, precision: 'unknown', useTrueSolarTime: true, cityId: '新疆维吾尔自治区-乌鲁木齐', applyDst: true }));
   assert.deepEqual(r.localWall, w(1990, 7, 1, 12, 0));
   assert.equal(r.method.dstApplied, false);
 });

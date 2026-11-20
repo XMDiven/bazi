@@ -3,7 +3,7 @@ const assert = require('node:assert/strict');
 const { METHOD_COPY, ZI_SECT_ITEMS, ziSectMatters, trueSolarPreview } = require('../../miniprogram/core/methodHints');
 const { makeInput } = require('../helpers');
 
-const URUMQI_LICHUN = makeInput({ year: 2024, month: 2, day: 4, hour: 18, minute: 0, useTrueSolarTime: true, cityId: 'urumqi' });
+const URUMQI_LICHUN = makeInput({ year: 2024, month: 2, day: 4, hour: 18, minute: 0, useTrueSolarTime: true, cityId: '新疆维吾尔自治区-乌鲁木齐' });
 
 test('copy follows PRD 5.5', () => {
   assert.deepEqual(METHOD_COPY.ziSect, { title: '晚上 11 点后出生，日柱算哪天？', hint: '子时派别 · 两种说法都常见，不确定就用默认' });
@@ -28,7 +28,7 @@ test('ziSectMatters: only when the two sects give different results', () => {
 
 test('ziSectMatters judges on the corrected time', () => {
   // 乌鲁木齐 23:30 校正后为 21:10，两派相同
-  assert.equal(ziSectMatters(makeInput({ year: 2024, month: 3, day: 10, hour: 23, minute: 30, useTrueSolarTime: true, cityId: 'urumqi' })), false);
+  assert.equal(ziSectMatters(makeInput({ year: 2024, month: 3, day: 10, hour: 23, minute: 30, useTrueSolarTime: true, cityId: '新疆维吾尔自治区-乌鲁木齐' })), false);
 });
 
 test('ziSectMatters: incomplete input falls back to Beijing time', () => {
@@ -41,7 +41,7 @@ test('trueSolarPreview: exact time', () => {
 });
 
 test('trueSolarPreview: small shifts and no change', () => {
-  assert.deepEqual(trueSolarPreview(makeInput({ year: 2024, month: 6, day: 1, useTrueSolarTime: true, cityId: 'shanghai' })),
+  assert.deepEqual(trueSolarPreview(makeInput({ year: 2024, month: 6, day: 1, useTrueSolarTime: true, cityId: '上海市-上海' })),
     { shift: '校正后 12:08（北京时间 +8 分）', change: '四柱不变' });
 });
 

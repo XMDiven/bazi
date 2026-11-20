@@ -14,8 +14,8 @@ test('PRD 7.3 example verbatim', () => {
   ]);
 });
 test('true solar input line', () => {
-  const d = buildDerivation(calculate(makeInput({ year: 2024, month: 2, day: 4, hour: 18, minute: 0, useTrueSolarTime: true, cityId: 'urumqi' })));
-  assert.equal(d[0], '输入时间：2024年2月4日 18:00（北京时间）；真太阳时 15:36（乌鲁木齐，经度 −129.5 分钟、均时差 −14.1 分钟）。');
+  const d = buildDerivation(calculate(makeInput({ year: 2024, month: 2, day: 4, hour: 18, minute: 0, useTrueSolarTime: true, cityId: '新疆维吾尔自治区-乌鲁木齐' })));
+  assert.equal(d[0], '输入时间：2024年2月4日 18:00（北京时间）；真太阳时 15:36（乌鲁木齐，经度 −129.6 分钟、均时差 −14.1 分钟）。');
 });
 test('dst input line', () => {
   const d = buildDerivation(calculate(makeInput({ year: 1990, month: 7, day: 1, applyDst: true })));
