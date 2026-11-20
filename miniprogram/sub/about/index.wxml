@@ -15,7 +15,7 @@
   <view class="section-title">服务协议</view>
   <view class="card">
     <view>本工具免费提供公历、农历与干支历之间的日期换算和历法科普，全部计算在本机完成。</view>
-    <view class="aux agreement-todo">开发者联系方式待补充</view>
+    <view class="aux agreement-todo">如有问题或建议，可在「我的 › 意见反馈」告诉我们。</view>
   </view>
 
   <view class="section-title">免责声明</view>

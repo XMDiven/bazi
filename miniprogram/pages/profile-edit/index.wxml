@@ -4,7 +4,7 @@
     <view class="card">
       <view class="row">
         <text class="field-label">称呼</text>
-        <input id="name-input" class="name-input" placeholder="例如：妈妈" value="{{name}}" maxlength="20" bindinput="onName" />
+        <input id="name-input" class="name-input" placeholder="例如：妈妈" value="{{name}}" maxlength="10" bindinput="onName" />
       </view>
       <view wx:if="{{errors.name}}" class="field-error">{{errors.name}}</view>
 
