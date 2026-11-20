@@ -29,15 +29,15 @@
       </picker-view-column>
     </picker-view>
 
-    <view wx:if="{{draft.precision === 'shichen'}}" class="shichen-list">
+    <view wx:if="{{draft.precision === 'shichen'}}" class="shichen-grid">
       <view
         wx:for="{{shichenList}}" wx:key="index"
-        class="row shichen-item {{draft.shichen === item.index ? 'shichen-on' : ''}}"
+        class="shichen-cell {{draft.shichen === item.index ? 'shichen-on' : ''}}"
         data-index="{{item.index}}" bindtap="onShichen"
-        hover-class="tap-active"
+        hover-class="tap-active" aria-label="{{item.name}} {{item.start}}到{{item.end}}"
       >
-        <text>{{item.name}}</text>
-        <text class="aux">{{item.start}}–{{item.end}}</text>
+        <view class="shichen-name">{{item.name}}</view>
+        <view class="shichen-range">{{item.start}}–{{item.end}}</view>
       </view>
     </view>
   </block>

@@ -6,6 +6,16 @@
 .wheel-item { line-height: 80rpx; text-align: center; font-size: var(--fs-body); color: var(--ink); }
 .wheel-indicator { height: 80rpx; }
 .section-label { margin: var(--sp-3) 0 var(--sp-2); }
-.shichen-list { margin-top: var(--sp-3); }
-.shichen-item { padding: 0 var(--sp-2); }
-.shichen-on { color: var(--accent); font-weight: 600; }
+/* 13 个时辰（子时拆早、晚）排成 4 列宫格，一屏放下，不用滚动 */
+.shichen-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--sp-2); margin-top: var(--sp-3); }
+.shichen-cell {
+  padding: var(--sp-2) 0;
+  text-align: center;
+  border: 1rpx solid var(--line);
+  border-radius: 12rpx;
+  line-height: 1.4;
+}
+.shichen-name { font-size: var(--fs-body); }
+.shichen-range { font-size: var(--fs-min); color: var(--ink-2); }
+.shichen-on { border-color: var(--accent); color: var(--accent); font-weight: 600; }
+.shichen-on .shichen-range { color: var(--accent); font-weight: normal; }
