@@ -43,7 +43,6 @@ Page({
     methodTitle: '',
     methodHint: '',
     methodOptions: [],
-    methodNeedsCity: false,
     showCitySheet: false,
     tip: { show: false, term: '', def: '', article: '' },
     showPoster: false,
@@ -100,7 +99,6 @@ Page({
       methodTitle: METHOD_TITLES[kind],
       methodHint: METHOD_HINTS[kind],
       methodOptions: methodOptions(kind, this.input),
-      methodNeedsCity: false,
     });
   },
   closeMethod() {
@@ -115,7 +113,9 @@ Page({
     if (kind === 'true_solar') {
       input.useTrueSolarTime = key === 'on';
       if (input.useTrueSolarTime && !input.cityId) {
-        this.setData({ methodNeedsCity: true, showCitySheet: true });
+        // 先关算法弹层再开城市弹层，避免两层遮罩叠在一起
+        this.setData({ methodKind: '', showCitySheet: true });
+        wx.showToast({ title: '开启真太阳时需先选择出生地', icon: 'none' });
         return;
       }
     }

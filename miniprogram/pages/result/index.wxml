@@ -57,7 +57,6 @@
   <view wx:for="{{methodOptions}}" wx:key="key" class="row method-option {{item.selected ? 'option-on' : ''}}" data-key="{{item.key}}" bindtap="onMethodOption">
     <text>{{item.text}}</text><text wx:if="{{item.selected}}">✓</text>
   </view>
-  <view wx:if="{{methodKind === 'true_solar' && methodNeedsCity}}" class="aux">开启真太阳时需先选择出生地</view>
 </sheet>
 <city-sheet show="{{showCitySheet}}" value="{{''}}" bind:select="onCitySelect" bind:close="closeCity" />
 
