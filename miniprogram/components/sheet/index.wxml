@@ -1,5 +1,5 @@
-<view wx:if="{{show}}" class="mask" bindtap="onClose" catchtouchmove="noop"></view>
-<view wx:if="{{show}}" class="sheet" catchtap="noop" role="dialog" aria-label="{{title}}">
+<view wx:if="{{visible}}" class="mask {{leaving ? 'mask-leave' : ''}}" bindtap="onClose" catchtouchmove="noop"></view>
+<view wx:if="{{visible}}" class="sheet {{leaving ? 'sheet-leave' : ''}}" catchtap="noop" role="dialog" aria-label="{{title}}">
   <view class="sheet-head">
     <view class="sheet-title">{{title}}</view>
     <view class="sheet-action"><slot name="action"></slot></view>

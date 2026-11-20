@@ -1,5 +1,8 @@
+.actions { display: flex; }
+.cancel { color: var(--ink-2); min-width: var(--tap); text-align: center; line-height: var(--tap); }
 .confirm { color: var(--accent); min-width: var(--tap); text-align: right; line-height: var(--tap); }
-.wheel { height: 400rpx; margin: var(--sp-3) 0; }
+/* 3 行可见：日期 + 时间两组滚轮在小屏上也能一屏放下，避免滚轮嵌在可滚动的弹层里 */
+.wheel { height: 240rpx; margin: var(--sp-3) 0; }
 .wheel-item { line-height: 80rpx; text-align: center; font-size: var(--fs-body); color: var(--ink); }
 .wheel-indicator { height: 80rpx; }
 .section-label { margin: var(--sp-3) 0 var(--sp-2); }

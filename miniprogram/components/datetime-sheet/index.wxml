@@ -1,5 +1,8 @@
 <sheet show="{{show}}" title="出生日期与时间" bind:close="onClose">
-  <view slot="action" id="datetime-confirm" class="confirm" bindtap="onConfirm" hover-class="tap-active">确定</view>
+  <view slot="action" class="actions">
+    <view id="datetime-cancel" class="cancel" bindtap="onClose" hover-class="tap-active">取消</view>
+    <view id="datetime-confirm" class="confirm" bindtap="onConfirm" hover-class="tap-active">确定</view>
+  </view>
   <block wx:if="{{draft}}">
     <segmented items="{{calendarItems}}" value="{{draft.calendar}}" bind:change="onCalendar" />
     <picker-view class="wheel" indicator-class="wheel-indicator" value="{{dateIndexes}}" bindchange="onDateChange">

@@ -6,6 +6,7 @@
   left: 0;
   background: rgba(0, 0, 0, 0.4);
   z-index: 100;
+  animation: mask-in 200ms ease-out;
 }
 .sheet {
   position: fixed;
@@ -24,6 +25,21 @@
   from { transform: translateY(100%); }
   to { transform: translateY(0); }
 }
+@keyframes sheet-out {
+  from { transform: translateY(0); }
+  to { transform: translateY(100%); }
+}
+@keyframes mask-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes mask-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+/* 退场期间节点还在，屏蔽点击，避免误触正在收起的内容 */
+.sheet-leave { animation: sheet-out 200ms ease-in forwards; pointer-events: none; }
+.mask-leave { animation: mask-out 200ms ease-in forwards; pointer-events: none; }
 .sheet-head {
   display: flex;
   align-items: center;
