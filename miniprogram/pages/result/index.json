@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "换算结果",
+  "navigationBarTitleText": "问辰查时",
   "usingComponents": {
     "summary-header": "/components/summary-header/index",
     "method-bar": "/components/method-bar/index",
